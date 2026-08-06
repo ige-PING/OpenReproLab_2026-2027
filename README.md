@@ -125,4 +125,4 @@ Copyright (C) 2026 Institut des Géosciences de l'Environnement, Grenoble.
 
 The computer code of this repository is released under the terms of the [GNU General Public License v3.0](./LICENSES/GPL-3.0-only).
 
-The rest of the content of this repository (including this syllabus) in released under the terms of the [Creative Commons Attribution Share Alike 4.0 International](./LICENSES/CC-BY-SA-4.0).
+The rest of the content of this repository (including this document) is released under the terms of the [Creative Commons Attribution Share Alike 4.0 International](./LICENSES/CC-BY-SA-4.0).
