@@ -54,7 +54,28 @@ class Application:
 
         Notes
         -----
-        If filepath is None, only a bare-bone initialization is done.
+        1. If filepath is None, only a bare-bone initialization is done.
+
+        2. The window of the application is divided into four areas (plus a
+           header, which is not shown on the graph below):
+
+        |--------------------------------------------------------------------|
+        |                                       |                            |
+        | varlist                               | dimlist                    |
+        | (a list of the variables)             | (a list of the dimensions) |
+        |                                       |                            |
+        |                                       |                            |
+        |                                       |                            |
+        |                                       |----------------------------|
+        |                                       |                            |
+        |                                       | stats                      |
+        |---------------------------------------| (statistics on the         |
+        |                                       | selected variable)         |
+        | vattrs                                |                            |
+        | (the attributes of selected variable) |                            |
+        |                                       |                            |
+        |                                       |                            |
+        |--------------------------------------------------------------------|
 
         """
         curses.curs_set(0)
