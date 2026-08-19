@@ -36,7 +36,12 @@ def ncexplorer(stdscr, filepath):
     """
     stdscr.clear()
     app = Application(stdscr, filepath)
-    stdscr.getkey()
+    while True:
+        key = stdscr.getkey()
+        if key == "q":
+            return
+        else:
+            app.on_key_pressed(key)
 
 
 class Application:
@@ -82,7 +87,6 @@ class Application:
         self.stdscr = stdscr
         if filepath is None:
             return
-
         self.ds = xr.open_dataset(filepath)
 
         # Hard-coded dimensions of the areas of the application
@@ -109,6 +113,10 @@ class Application:
         self.xy2_vattrs = (curses.LINES - 1, self.vattrs_width - 1)
         self.xy2_stats = (curses.LINES - 1, curses.COLS - 1)
 
+        # Information about where we currently are in the list of variables
+        self.varlist_top = 0
+        self.varlist_current = 0
+
         # Draw the outline of the window
         self.draw_header()
         self.draw_borders()
@@ -118,60 +126,22 @@ class Application:
         lines = self.get_variables()
         self.varlist = curses.newpad(
             len(lines),
-            max(len(line) for line in lines),
+            max(max(len(line) for line in lines), self.varlist_width),
         )
         for i, line in enumerate(lines):
             self.varlist.addstr(i, 0, line)
-        self.varlist.refresh(0, 0, *self.xy1_varlist, *self.xy2_varlist)
+        self.varlist.chgat(self.varlist_current, 0, curses.A_REVERSE)
+        self.draw_varlist()
 
         # Create and show the pad for the list of dimensions
         lines = self.get_dimensions()
         self.dimlist = curses.newpad(
             len(lines),
-            max(len(line) for line in lines),
+            max(max(len(line) for line in lines), self.dimlist_width),
         )
         for i, line in enumerate(lines):
             self.dimlist.addstr(i, 0, line)
         self.dimlist.refresh(0, 0, *self.xy1_dimlist, *self.xy2_dimlist)
-
-    def draw_header(self):
-        """Draw the application's header."""
-        self.addstr(0, 0, hcenter("ncnc"), curses.A_REVERSE)
-
-    def draw_borders(self):
-        """Draw the borders between the different areas of the application."""
-        # Horizontal line between list of variables and variable attributes
-        self.addstr(self.varlist_height + 1, 0, "-" * self.varlist_width)
-        # Horizontal line between list of dimensions and statistics
-        self.addstr(
-            self.dimlist_height + 1,
-            self.varlist_width + 1,
-            "-" * self.dimlist_width,
-        )
-        # Vertical line between left and right areas
-        for y in range(1, curses.LINES):
-            self.addch(y, self.varlist_width, "|")
-
-    def error(self, msg):
-        """Show error message.
-
-        Parameters
-        ----------
-        msg: str
-            The error message.
-
-        Notes
-        -----
-        This method returns when the user presses a key.
-
-        """
-        self.clear()
-        self.draw_header()
-        y = (curses.LINES - 1) // 2
-        self.addstr(y, 0, hcenter(msg))
-        self.addstr(y + 1, 0, hcenter("Press any key to exit"))
-        self.refresh()
-        self.getkey()
 
     def __getattr__(self, name):
         """Convenience getattr function that falls back on self.stdscr.
@@ -187,6 +157,48 @@ class Application:
 
         """
         return getattr(self.stdscr, name)
+
+    @property
+    def filepath(self):
+        """The path to the NetCDF file."""
+        return self.ds.encoding["source"]
+
+    @property
+    def ndims(self):
+        """The number of dimensions in the file."""
+        return len(self.ds.sizes)
+
+    @property
+    def nvars(self):
+        """The number of variables in the file."""
+        return len(self.ds.variables)
+
+    def draw_header(self, text=None):
+        """Draw the application's header.
+
+        Parameters
+        ----------
+        text: str | None
+            The text to show in the header (automatically created if None).
+
+        """
+        if text is None:
+            text = f">> ncnc: exploring {self.filepath} <<"
+        self.addstr(0, 0, hcenter(text), curses.A_BOLD)
+
+    def draw_borders(self):
+        """Draw the borders between the different areas of the application."""
+        # Horizontal line between list of variables and variable attributes
+        self.addstr(self.varlist_height + 1, 0, "-" * self.varlist_width)
+        # Horizontal line between list of dimensions and statistics
+        self.addstr(
+            self.dimlist_height + 1,
+            self.varlist_width + 1,
+            "-" * self.dimlist_width,
+        )
+        # Vertical line between left and right areas
+        for y in range(1, curses.LINES):
+            self.addch(y, self.varlist_width, "|")
 
     def get_dimensions(self):
         """Returns a description of the dims of the underlying NetCDF file.
@@ -210,22 +222,84 @@ class Application:
             list of character strings, each element describing one variable.
 
         """
-        n = len(self.ds.variables)
-        names = [None] * n
-        dtypes = [None] * n
-        dimensions = [None] * n
+        names = [None] * self.nvars
+        dtypes = [None] * self.nvars
+        dimensions = [None] * self.nvars
         for i, name in enumerate(self.ds.variables):
             names[i] = name
             dtypes[i] = str(self.ds.variables[name].dtype)
             dimensions[i] = list(self.ds.variables[name].dims)
         names = right_pad_strings(names)
         dtypes = right_pad_strings(dtypes)
-        for i in range(n):
+        for i in range(self.nvars):
             if len(dimensions[i]) > 0:
                 dimensions[i] = "(" + ", ".join(dimensions[i]) + ")"
             else:
                 dimensions[i] = ""
-        return [f"{names[i]}  {dtypes[i]}  {dimensions[i]}" for i in range(n)]
+        return [
+            f"{names[i]}  {dtypes[i]}  {dimensions[i]}"
+            for i in range(self.nvars)
+        ]
+
+    def draw_varlist(self):
+        """Draw the list of variables."""
+        self.varlist.refresh(
+            self.varlist_top,
+            0,
+            *self.xy1_varlist,
+            *self.xy2_varlist,
+        )
+
+    @property
+    def last_var_is_visible(self):
+        """True iff the last variable of the list is visible."""
+        return self.nvars - self.varlist_top < self.varlist_height
+
+    @property
+    def last_visible_var_is_selected(self):
+        """True iff the last visible variable is selected."""
+        return (
+            self.varlist_current - self.varlist_top + 1 == self.varlist_height
+        )
+
+    def on_key_pressed(self, key):
+        """Call back when a key is pressed.
+
+        Parameters
+        ----------
+        key: str
+            The key that was pressed.
+
+        """
+        key = str(key)
+        if key in ("n", "KEY_DOWN"):
+            self.on_move_down()
+        elif key in ("p", "KEY_UP"):
+            self.on_move_up()
+
+    def on_move_down(self):
+        """Call back for moving down the list of variables."""
+        if self.varlist_current >= self.nvars - 1:
+            return
+        self.varlist.chgat(self.varlist_current, 0, curses.A_NORMAL)
+        if self.last_visible_var_is_selected and not self.last_var_is_visible:
+            self.varlist_top += 1
+        self.varlist_current += 1
+        self.varlist.chgat(self.varlist_current, 0, curses.A_REVERSE)
+        self.draw_varlist()
+        self.refresh()
+
+    def on_move_up(self):
+        """Call back for moving up the list of variables."""
+        if self.varlist_current <= 0:
+            return
+        self.varlist.chgat(self.varlist_current, 0, curses.A_NORMAL)
+        if self.varlist_current <= self.varlist_top:
+            self.varlist_top -= 1
+        self.varlist_current -= 1
+        self.varlist.chgat(self.varlist_current, 0, curses.A_REVERSE)
+        self.draw_varlist()
+        self.refresh()
 
 
 # -------------------------------------#
