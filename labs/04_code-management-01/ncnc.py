@@ -216,7 +216,7 @@ class Application:
         dimensions = [None] * n
         for i, name in enumerate(self.ds.variables):
             names[i] = name
-            dtypes[i] = self.ds.variables[name].dtype
+            dtypes[i] = str(self.ds.variables[name].dtype)
             dimensions[i] = list(self.ds.variables[name].dims)
         names = right_pad_strings(names)
         dtypes = right_pad_strings(dtypes)
