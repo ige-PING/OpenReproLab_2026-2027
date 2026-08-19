@@ -409,6 +409,8 @@ def right_pad_strings(strings):
         right-padded to have equal length.
 
     """
+    if len(strings) == 0:
+        return []
     n_chars = max(len(string) for string in strings)
     format_ = f"%-{n_chars}s"
     return [format_ % string for string in strings]
