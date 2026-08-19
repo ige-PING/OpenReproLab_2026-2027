@@ -97,8 +97,6 @@ class Application:
             len(var.attrs) for _, var in self.ds.variables.items()
         )
         self.dimlist_height = len(self.ds.sizes)
-
-        # Calculated dimensions of the areas of the application
         self.varlist_width = curses.COLS - 1 - self.dimlist_width
         self.varlist_height = curses.LINES - 2 - self.vattrs_height
         self.vattrs_width = self.varlist_width
