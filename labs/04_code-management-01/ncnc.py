@@ -91,8 +91,12 @@ class Application:
 
         # Hard-coded dimensions of the areas of the application
         self.dimlist_width = 40
-        self.dimlist_height = 20
-        self.vattrs_height = 12
+
+        # Dimensions of the areas that are computed dynamically
+        self.vattrs_height = max(
+            len(var.attrs) for _, var in self.ds.variables.items()
+        )
+        self.dimlist_height = len(self.ds.sizes)
 
         # Calculated dimensions of the areas of the application
         self.varlist_width = curses.COLS - 1 - self.dimlist_width
@@ -144,7 +148,7 @@ class Application:
         self.dimlist.refresh(0, 0, *self.xy1_dimlist, *self.xy2_dimlist)
 
         # Create and show the pad for the variables' attributes
-        lines, self.vattrs_idx_start = self.get_vattrs()
+        lines = self.get_vattrs()
         self.vattrs = curses.newpad(
             len(lines),
             max(max(len(line) for line in lines), self.vattrs_width),
@@ -261,22 +265,17 @@ class Application:
             file, as a list of character strings. This list contains blank
             lines so that we never show attributes of two variables at the same
             time.
-        [int]
-            A list where the ith value represents the starting index of the
-            attributes of the ith variable.
 
         """
         attrs = []
-        idx_start = []
         for vname, var in self.ds.variables.items():
-            idx_start.append(len(attrs))
             names = list(var.attrs.keys())
             values = [var.attrs[name] for name in names]
             names = right_pad_strings(names)
             for name, value in zip(names, values):
                 attrs.append(f"{name}  {value}")
             attrs += [""] * (self.vattrs_height - len(names))
-        return attrs, idx_start
+        return attrs
 
     def draw_varlist(self):
         """Draw the list of variables."""
@@ -290,7 +289,7 @@ class Application:
     def draw_vattrs(self):
         """Draw the currently selected variable's attributes."""
         self.vattrs.refresh(
-            self.vattrs_idx_start[self.varlist_current],
+            self.varlist_current * self.vattrs_height,
             0,
             *self.xy1_vattrs,
             *self.xy2_vattrs,
