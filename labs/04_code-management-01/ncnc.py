@@ -92,7 +92,7 @@ class Application:
         # Hard-coded dimensions of the areas of the application
         self.dimlist_width = 40
         self.dimlist_height = 20
-        self.vattrs_height = 10
+        self.vattrs_height = 12
 
         # Calculated dimensions of the areas of the application
         self.varlist_width = curses.COLS - 1 - self.dimlist_width
@@ -142,6 +142,16 @@ class Application:
         for i, line in enumerate(lines):
             self.dimlist.addstr(i, 0, line)
         self.dimlist.refresh(0, 0, *self.xy1_dimlist, *self.xy2_dimlist)
+
+        # Create and show the pad for the variables' attributes
+        lines, self.vattrs_idx_start = self.get_vattrs()
+        self.vattrs = curses.newpad(
+            len(lines),
+            max(max(len(line) for line in lines), self.vattrs_width),
+        )
+        for i, line in enumerate(lines):
+            self.vattrs.addstr(i, 0, line)
+        self.vattrs.refresh(0, 0, *self.xy1_vattrs, *self.xy2_vattrs)
 
     def __getattr__(self, name):
         """Convenience getattr function that falls back on self.stdscr.
@@ -241,6 +251,33 @@ class Application:
             for i in range(self.nvars)
         ]
 
+    def get_vattrs(self):
+        """Return a description of the var attrs of the underlying NetCDF file.
+
+        Returns
+        -------
+        [str]
+            A description of the variables'attributes of the underlying NetCDF
+            file, as a list of character strings. This list contains blank
+            lines so that we never show attributes of two variables at the same
+            time.
+        [int]
+            A list where the ith value represents the starting index of the
+            attributes of the ith variable.
+
+        """
+        attrs = []
+        idx_start = []
+        for vname, var in self.ds.variables.items():
+            idx_start.append(len(attrs))
+            names = list(var.attrs.keys())
+            values = [var.attrs[name] for name in names]
+            names = right_pad_strings(names)
+            for name, value in zip(names, values):
+                attrs.append(f"{name}  {value}")
+            attrs += [""] * (self.vattrs_height - len(names))
+        return attrs, idx_start
+
     def draw_varlist(self):
         """Draw the list of variables."""
         self.varlist.refresh(
@@ -248,6 +285,15 @@ class Application:
             0,
             *self.xy1_varlist,
             *self.xy2_varlist,
+        )
+
+    def draw_vattrs(self):
+        """Draw the currently selected variable's attributes."""
+        self.vattrs.refresh(
+            self.vattrs_idx_start[self.varlist_current],
+            0,
+            *self.xy1_vattrs,
+            *self.xy2_vattrs,
         )
 
     @property
@@ -287,6 +333,7 @@ class Application:
         self.varlist_current += 1
         self.varlist.chgat(self.varlist_current, 0, curses.A_REVERSE)
         self.draw_varlist()
+        self.draw_vattrs()
         self.refresh()
 
     def on_move_up(self):
@@ -299,6 +346,7 @@ class Application:
         self.varlist_current -= 1
         self.varlist.chgat(self.varlist_current, 0, curses.A_REVERSE)
         self.draw_varlist()
+        self.draw_vattrs()
         self.refresh()
 
 
