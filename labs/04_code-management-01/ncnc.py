@@ -318,11 +318,15 @@ class Application:
         """
         key = str(key)
         if key in ("n", "KEY_DOWN"):
-            self.on_move_down()
+            self.move_down()
         elif key in ("p", "KEY_UP"):
-            self.on_move_up()
+            self.move_up()
+        elif key == "G":
+            self.move_all_the_way_down()
+        elif key == "g":
+            self.move_all_the_way_up()
 
-    def on_move_down(self):
+    def move_down(self):
         """Call back for moving down the list of variables."""
         if self.varlist_current >= self.nvars - 1:
             return
@@ -335,7 +339,7 @@ class Application:
         self.draw_vattrs()
         self.refresh()
 
-    def on_move_up(self):
+    def move_up(self):
         """Call back for moving up the list of variables."""
         if self.varlist_current <= 0:
             return
@@ -343,6 +347,30 @@ class Application:
         if self.varlist_current <= self.varlist_top:
             self.varlist_top -= 1
         self.varlist_current -= 1
+        self.varlist.chgat(self.varlist_current, 0, curses.A_REVERSE)
+        self.draw_varlist()
+        self.draw_vattrs()
+        self.refresh()
+
+    def move_all_the_way_down(self):
+        """Call back for moving all the way down the list of variables."""
+        if self.last_var_is_visible and self.last_visible_var_is_selected:
+            return
+        self.varlist.chgat(self.varlist_current, 0, curses.A_NORMAL)
+        self.varlist_top = self.nvars - self.varlist_height
+        self.varlist_current = self.nvars - 1
+        self.varlist.chgat(self.varlist_current, 0, curses.A_REVERSE)
+        self.draw_varlist()
+        self.draw_vattrs()
+        self.refresh()
+
+    def move_all_the_way_up(self):
+        """Call back for moving all the way up the list of variables."""
+        if self.varlist_current <= 0:
+            return
+        self.varlist.chgat(self.varlist_current, 0, curses.A_NORMAL)
+        self.varlist_top = 0
+        self.varlist_current = 0
         self.varlist.chgat(self.varlist_current, 0, curses.A_REVERSE)
         self.draw_varlist()
         self.draw_vattrs()
