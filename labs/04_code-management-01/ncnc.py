@@ -160,6 +160,7 @@ class Application:
 
         # Create but do not show the pad for the stastitics
         self.stats = curses.newpad(self.stats_height, self.stats_width)
+        self.stats_data = dict((name, None) for name in self.ds.variables)
 
         # Create but do not show the pad for the global attributes
         lines = self.get_gattrs()
@@ -209,6 +210,11 @@ class Application:
     def ngattrs(self):
         """The number of global attributes in the file."""
         return len(self.ds.attrs)
+
+    @property
+    def varname(self):
+        """The name of the currently selected variable."""
+        return list(self.ds.variables.keys())[self.varlist_current]
 
     def draw_header(self, text=None):
         """Draw the application's header.
@@ -347,6 +353,11 @@ class Application:
         line = " " * self.stats_width
         for i in range(self.stats_height - 1):
             self.stats.addstr(i, 0, line)
+        stats = self.stats_data[self.varname]
+        for i, name in enumerate({} if stats is None else stats.keys()):
+            line = f"{name} = {stats[name]}"
+            line = line[: min(len(line), self.stats_width)]
+            self.stats.addstr(i, 0, line)
         self.stats.refresh(
             0,
             0,
@@ -386,6 +397,18 @@ class Application:
             self.move_all_the_way_up()
         elif key == "a":
             self.navigate_gattrs()
+        elif key == "s":
+            varname = self.varname
+            if self.stats_data[varname] is None:
+                self.stats_data[varname] = calc_stats(self.ds, varname)
+            self.draw_stats()
+            self.refresh()
+        elif key == "S":
+            for varname in self.ds.variables:
+                if self.stats_data[varname] is None:
+                    self.stats_data[varname] = calc_stats(self.ds, varname)
+            self.draw_stats()
+            self.refresh()
 
     def move_down(self):
         """Call back for moving down the list of variables."""
@@ -398,6 +421,7 @@ class Application:
         self.varlist.chgat(self.varlist_current, 0, curses.A_REVERSE)
         self.draw_varlist()
         self.draw_vattrs()
+        self.draw_stats()
         self.refresh()
 
     def move_up(self):
@@ -411,6 +435,7 @@ class Application:
         self.varlist.chgat(self.varlist_current, 0, curses.A_REVERSE)
         self.draw_varlist()
         self.draw_vattrs()
+        self.draw_stats()
         self.refresh()
 
     def move_all_the_way_down(self):
@@ -423,6 +448,7 @@ class Application:
         self.varlist.chgat(self.varlist_current, 0, curses.A_REVERSE)
         self.draw_varlist()
         self.draw_vattrs()
+        self.draw_stats()
         self.refresh()
 
     def move_all_the_way_up(self):
@@ -435,6 +461,7 @@ class Application:
         self.varlist.chgat(self.varlist_current, 0, curses.A_REVERSE)
         self.draw_varlist()
         self.draw_vattrs()
+        self.draw_stats()
         self.refresh()
 
     def navigate_gattrs(self):
@@ -465,6 +492,35 @@ class Application:
         self.draw_dimlist()
         self.draw_stats()
         self.refresh()
+
+
+# -------------------------------#
+# Utility functions: NetCDF data #
+# -------------------------------#
+
+
+def calc_stats(ds, varname):
+    """Calculate statistics on a NetCDF variable.
+
+    Parameters
+    ----------
+    ds: xarray.Dataset
+        The NetCDF dataset, opened with xarray.
+    varname: str
+        The name of the variable of interest.
+
+    Returns
+    -------
+    dict
+        Statistics calculated on given variable, as a dictionary of
+        (name, value) pairs.
+
+    """
+    # This implementation is temporary, it allows me to easily test my own
+    # implementation without commiting it
+    import my_calc_stats
+
+    return my_calc_stats.calc_stats(ds, varname)
 
 
 # -------------------------------------#
