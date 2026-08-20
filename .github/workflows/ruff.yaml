@@ -1,0 +1,38 @@
+# Workflow to run Ruff on Python code (OpenReproLab 2026-2027).
+#
+# Copyright (C) Institut des Géosciences de l'Environnement, Grenoble.
+#
+# This program is free software: you can redistribute it and/or modify it under
+# the terms of the GNU General Public License as published by the Free Software
+# Foundation, version 3.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+# FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+# details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+name: Ruff
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'ciscripts/**/*.py'
+jobs:
+  Ruff:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Prepare Ruff
+        uses: astral-sh/ruff-action@v4.1.0
+        with:
+          args: "--version"
+      - name: Run Ruff (check)
+        run: ruff check --diff ciscripts
+      - name: Run Ruff (format)
+        run: ruff format --diff ciscripts
