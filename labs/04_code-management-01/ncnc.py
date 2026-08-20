@@ -16,6 +16,7 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 """
 
 import curses
+import curses.panel
 
 import xarray as xr
 
@@ -45,7 +46,7 @@ def ncexplorer(stdscr, filepath):
 
 
 class Application:
-    """Cladd to handle the ncnc application."""
+    """Class to handle the ncnc application."""
 
     def __init__(self, stdscr, filepath=None):
         """Initialize self.
@@ -85,6 +86,8 @@ class Application:
         """
         curses.curs_set(0)
         self.stdscr = stdscr
+        self.main = curses.panel.new_panel(self.stdscr)
+        self.main.top()
         if filepath is None:
             return
         self.ds = xr.open_dataset(filepath)
@@ -143,7 +146,7 @@ class Application:
         )
         for i, line in enumerate(lines):
             self.dimlist.addstr(i, 0, line)
-        self.dimlist.refresh(0, 0, *self.xy1_dimlist, *self.xy2_dimlist)
+        self.draw_dimlist()
 
         # Create and show the pad for the variables' attributes
         lines = self.get_vattrs()
@@ -154,6 +157,23 @@ class Application:
         for i, line in enumerate(lines):
             self.vattrs.addstr(i, 0, line)
         self.vattrs.refresh(0, 0, *self.xy1_vattrs, *self.xy2_vattrs)
+
+        # Create but do not show the pad for the stastitics
+        self.stats = curses.newpad(self.stats_height, self.stats_width)
+
+        # Create but do not show the pad for the global attributes
+        lines = self.get_gattrs()
+        self.gattrs_nlines = len(lines)
+        while len(lines) < curses.LINES - 1:
+            lines.append("")
+        self.gattrs = curses.panel.new_panel(
+            curses.newpad(
+                len(lines),
+                max(max(len(line) for line in lines), curses.COLS - 1),
+            )
+        )
+        for i, line in enumerate(lines):
+            self.gattrs.window().addstr(i, 0, line)
 
     def __getattr__(self, name):
         """Convenience getattr function that falls back on self.stdscr.
@@ -184,6 +204,11 @@ class Application:
     def nvars(self):
         """The number of variables in the file."""
         return len(self.ds.variables)
+
+    @property
+    def ngattrs(self):
+        """The number of global attributes in the file."""
+        return len(self.ds.attrs)
 
     def draw_header(self, text=None):
         """Draw the application's header.
@@ -259,7 +284,7 @@ class Application:
         Returns
         -------
         [str]
-            A description of the variables'attributes of the underlying NetCDF
+            A description of the variables' attributes of the underlying NetCDF
             file, as a list of character strings. This list contains blank
             lines so that we never show attributes of two variables at the same
             time.
@@ -275,6 +300,25 @@ class Application:
             attrs += [""] * (self.vattrs_height - len(names))
         return attrs
 
+    def get_gattrs(self):
+        """Return a description of the underlying NetCDF file's global attrs.
+
+        Returns
+        -------
+        [str]
+            A description of the global attributes of the underlying NetCDF
+            file, as a list of character strings.
+
+        """
+        names = []
+        values = []
+        for name, value in self.ds.attrs.items():
+            for i, line in enumerate(value.split("\n")):
+                names.append(name if i == 0 else "")
+                values.append(line)
+        names = right_pad_strings(names)
+        return [f"{name}  {value}" for name, value in zip(names, values)]
+
     def draw_varlist(self):
         """Draw the list of variables."""
         self.varlist.refresh(
@@ -284,6 +328,10 @@ class Application:
             *self.xy2_varlist,
         )
 
+    def draw_dimlist(self):
+        """Draw the list of dimensions."""
+        self.dimlist.refresh(0, 0, *self.xy1_dimlist, *self.xy2_dimlist)
+
     def draw_vattrs(self):
         """Draw the currently selected variable's attributes."""
         self.vattrs.refresh(
@@ -291,6 +339,19 @@ class Application:
             0,
             *self.xy1_vattrs,
             *self.xy2_vattrs,
+        )
+
+    def draw_stats(self):
+        """Draw the stats for the current variable."""
+        # Clear what is already there
+        line = " " * self.stats_width
+        for i in range(self.stats_height - 1):
+            self.stats.addstr(i, 0, line)
+        self.stats.refresh(
+            0,
+            0,
+            *self.xy1_stats,
+            *self.xy2_stats,
         )
 
     @property
@@ -323,6 +384,8 @@ class Application:
             self.move_all_the_way_down()
         elif key == "g":
             self.move_all_the_way_up()
+        elif key == "a":
+            self.navigate_gattrs()
 
     def move_down(self):
         """Call back for moving down the list of variables."""
@@ -372,6 +435,35 @@ class Application:
         self.varlist.chgat(self.varlist_current, 0, curses.A_REVERSE)
         self.draw_varlist()
         self.draw_vattrs()
+        self.refresh()
+
+    def navigate_gattrs(self):
+        """Show and navigate the global attributes."""
+        self.gattrs.top()
+        title = f">> ncnc: global attributes of {self.filepath} <<"
+        self.draw_header(text=title)
+        pad = self.gattrs.window()
+        top = 0
+        pad.refresh(top, 0, 1, 0, curses.LINES - 1, curses.COLS - 1)
+        while True:
+            key = str(self.getkey())
+            if key == "q":
+                break
+            refresh = True
+            if key in ("n", "KEY_DOWN"):
+                top = min(top + 1, self.gattrs_nlines - 1)
+            elif key in ("p", "KEY_UP"):
+                top = max(top - 1, 0)
+            else:
+                refresh = False
+            if refresh:
+                pad.refresh(top, 0, 1, 0, curses.LINES - 1, curses.COLS - 1)
+        self.draw_header()
+        self.draw_borders()
+        self.draw_varlist()
+        self.draw_vattrs()
+        self.draw_dimlist()
+        self.draw_stats()
         self.refresh()
 
 
