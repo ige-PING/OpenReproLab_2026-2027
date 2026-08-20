@@ -21,9 +21,9 @@ on:
     branches:
       - 'users/**'
     paths:
-      - 'ciscripts/**/*.py'
-      - 'lab04/labs/04_code-management-01/questionnaire-on-licenses.md'
-      - 'lab04/labs/04_code-management-01/ncnc.py'
+      - 'ciscripts/**.py'
+      - 'labs/04_code-management-01/**.py'
+      - 'labs/04_code-management-01/**.md'
 jobs:
   Lab04:
     runs-on: ubuntu-latest
