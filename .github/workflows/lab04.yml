@@ -1,0 +1,37 @@
+# Workflow to check work on lab04 of OpenReproLab 2026-2027.
+#
+# Copyright (C) Institut des Géosciences de l'Environnement, Grenoble.
+#
+# This program is free software: you can redistribute it and/or modify it under
+# the terms of the GNU General Public License as published by the Free Software
+# Foundation, version 3.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+# FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+# details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+name: Lab04
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'users/**'
+    paths:
+      - 'ciscripts/**/*.py'
+      - 'lab04/labs/04_code-management-01/questionnaire-on-licenses.md'
+      - 'lab04/labs/04_code-management-01/ncnc.py'
+jobs:
+  Lab04:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Check work
+        runs: |
+          python ciscripts/lab04.py

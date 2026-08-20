@@ -16,6 +16,7 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 """
 
 import os
+import sys
 
 from misctools import part_banner, path_of_repo
 from questionnaire import Questionnaire
@@ -34,7 +35,7 @@ questionnaire = Questionnaire(
         "questionnaire-on-licenses.md",
     )
 )
-questionnaire.check_answers(
+all_good = questionnaire.check_answers(
     [
         [
             [1],
@@ -62,3 +63,10 @@ questionnaire.check_answers(
         ],
     ]
 )
+
+if all_good:
+    print("Lab 04 completed succesfully, congratulations!")
+    sys.exit(0)
+else:
+    print("Some checks failed, keep at it!")
+    sys.exit(1)
