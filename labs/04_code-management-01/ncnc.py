@@ -107,16 +107,16 @@ class Application:
         self.stats_width = self.dimlist_width
 
         # For convenience, the location of the top-left corner of each area
-        self.xy1_varlist = (1, 0)
-        self.xy1_dimlist = (1, self.varlist_width + 1)
-        self.xy1_vattrs = (self.varlist_height + 2, 0)
-        self.xy1_stats = (self.dimlist_height + 2, self.varlist_width + 1)
+        self.yx1_varlist = (1, 0)
+        self.yx1_dimlist = (1, self.varlist_width + 1)
+        self.yx1_vattrs = (self.varlist_height + 2, 0)
+        self.yx1_stats = (self.dimlist_height + 2, self.varlist_width + 1)
 
         # For convenience, the location of the bottom-right corner of each area
-        self.xy2_varlist = (self.varlist_height, self.varlist_width - 1)
-        self.xy2_dimlist = (self.dimlist_height, curses.COLS - 1)
-        self.xy2_vattrs = (curses.LINES - 1, self.vattrs_width - 1)
-        self.xy2_stats = (curses.LINES - 1, curses.COLS - 1)
+        self.yx2_varlist = (self.varlist_height, self.varlist_width - 1)
+        self.yx2_dimlist = (self.dimlist_height, curses.COLS - 1)
+        self.yx2_vattrs = (curses.LINES - 1, self.vattrs_width - 1)
+        self.yx2_stats = (curses.LINES - 1, curses.COLS - 1)
 
         # Information about where we currently are in the list of variables
         self.varlist_top = 0
@@ -156,7 +156,7 @@ class Application:
         )
         for i, line in enumerate(lines):
             self.vattrs.addstr(i, 0, line)
-        self.vattrs.refresh(0, 0, *self.xy1_vattrs, *self.xy2_vattrs)
+        self.vattrs.refresh(0, 0, *self.yx1_vattrs, *self.yx2_vattrs)
 
         # Create but do not show the pad for the stastitics
         self.stats = curses.newpad(self.stats_height, self.stats_width)
@@ -324,21 +324,21 @@ class Application:
         self.varlist.refresh(
             self.varlist_top,
             0,
-            *self.xy1_varlist,
-            *self.xy2_varlist,
+            *self.yx1_varlist,
+            *self.yx2_varlist,
         )
 
     def draw_dimlist(self):
         """Draw the list of dimensions."""
-        self.dimlist.refresh(0, 0, *self.xy1_dimlist, *self.xy2_dimlist)
+        self.dimlist.refresh(0, 0, *self.yx1_dimlist, *self.yx2_dimlist)
 
     def draw_vattrs(self):
         """Draw the currently selected variable's attributes."""
         self.vattrs.refresh(
             self.varlist_current * self.vattrs_height,
             0,
-            *self.xy1_vattrs,
-            *self.xy2_vattrs,
+            *self.yx1_vattrs,
+            *self.yx2_vattrs,
         )
 
     def draw_stats(self):
@@ -350,8 +350,8 @@ class Application:
         self.stats.refresh(
             0,
             0,
-            *self.xy1_stats,
-            *self.xy2_stats,
+            *self.yx1_stats,
+            *self.yx2_stats,
         )
 
     @property
