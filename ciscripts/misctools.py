@@ -50,3 +50,19 @@ def path_of_repo(path=None):
         raise RuntimeError(msg)
     else:
         return path_of_repo(parent)
+
+
+def part_banner(number, name):
+    """Print a banner to indicate the part of the lab being checked.
+
+    Parameters
+    ----------
+    number: int
+        The number of the part being checked (eg. part 1, part 2).
+    name: str
+        The name of the part.
+
+    """
+    middle_line = f"# Part {number}: {name} #"
+    around_line = "-" * (len(middle_line) - 2)
+    print(f"#{around_line}#\n{middle_line}\n#{around_line}#\n")

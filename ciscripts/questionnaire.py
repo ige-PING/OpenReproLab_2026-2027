@@ -29,51 +29,51 @@ class Question:
 
         """
         self.question = question.strip()
-        self.answers = []
+        self.choices = []
 
-    def add_answer(self, answer, selected):
-        """Add a possible answer to self (ie. one of the multiple choices).
+    def add_choice(self, choice, selected):
+        """Add a possible choice to self.
 
         Parameters
         ----------
-        answer: str
-            The text of the answer.
+        choice: str
+            The text of the choice.
         selected: bool
-            Whether the answer was selected in the questionnaire.
+            Whether the choice was selected in the questionnaire.
 
         """
-        self.answers.append(Answer(answer, selected))
+        self.choices.append(Choice(choice, selected))
 
     def __repr__(self):
         """String representation of self."""
         out = f"{self.question}\n"
-        if len(self.answers) > 0:
+        if len(self.choices) > 0:
             out += "\n"
-        out += "\n".join(str(answer) for answer in self.answers)
+        out += "\n".join(str(choice) for choice in self.choices)
         return out + "\n"
 
 
-class Answer:
+class Choice:
     """Class that represents one of the multiple choices of a question."""
 
-    def __init__(self, answer, selected):
+    def __init__(self, choice, selected):
         """Initialize self.
 
         Parameters
         ----------
-        answer: str
-            The text of the answer.
+        choice: str
+            The text of the choice.
         selected: bool
-            Whether the answer was selected in the questionnaire.
+            Whether the choice was selected in the questionnaire.
 
         """
-        self.answer = answer.strip()
+        self.choice = choice.strip()
         self.selected = bool(selected)
 
     def __repr__(self):
         """String representation of self."""
         mark = "x" if self.selected else " "
-        return f" - [{mark}] {self.answer}"
+        return f" - [{mark}] {self.choice}"
 
 
 class Questionnaire:
@@ -102,9 +102,9 @@ class Questionnaire:
                 self.questions.append(Question(line[len(start_q) :]))
                 counter += 1
             elif line.startswith(start_a):
-                self.questions[-1].add_answer(line[len(start_a) :], False)
+                self.questions[-1].add_choice(line[len(start_a) :], False)
             elif line.startswith(start_s):
-                self.questions[-1].add_answer(line[len(start_s) :], True)
+                self.questions[-1].add_choice(line[len(start_s) :], True)
             else:
                 msg = f"Could not parse line {i_line}: {line}."
                 raise ValueError(msg)
@@ -112,3 +112,66 @@ class Questionnaire:
     def __repr__(self):
         """String representation of self."""
         return "\n".join(f"{i + 1}. {q}" for i, q in enumerate(self.questions))
+
+    def check_answers(self, correct_answers):
+        """Check choices selected in questionnaire versus correct answers.
+
+        Parameters
+        ----------
+        correct_answers: list
+            The correct answers, along with hints to help students find the
+            correct answers. The required format is:
+
+            [
+                ([0], "Hint for question 1"),
+                ([2, 4], "Hint for question 2"),
+                ...
+            ]
+
+            where the numbers are the 0-based indices of the correct choices.
+
+        Returns
+        -------
+        bool
+            True if and only if all questions were answered correctly.
+
+        Prints
+        ------
+        Information on each question: whether the question was answered
+        correctly and, if not, the corresponding hint.
+
+        """
+        if len(correct_answers) != len(self.questions):
+            msg = "Incorrect number of answers."
+            raise ValueError(msg)
+
+        questionnaire_is_correct = True
+        for i_question, question in enumerate(self.questions):
+            correct, hint = correct_answers[i_question]
+
+            if min(correct) < 0 or max(correct) > len(question.choices) - 1:
+                msg = "Bad index value (too small or too large)."
+                raise ValueError(msg)
+
+            question_is_correct = True
+            for i_choice, choice in enumerate(question.choices):
+                if choice.selected and i_choice in correct:
+                    # Correct positive answer
+                    pass
+                elif not choice.selected and i_choice not in correct:
+                    # Correct negative answer
+                    pass
+                else:
+                    question_is_correct = False
+                    questionnaire_is_correct = False
+                    break
+
+            # Print feedback
+            if question_is_correct:
+                print(f"Answer to question {i_question + 1} is correct.\n")
+            else:
+                print(f"Answer to question {i_question + 1} is incorrect.\n")
+                if len(hint.strip()) > 0:
+                    print(f"Hint: {hint}\n")
+
+        return questionnaire_is_correct
