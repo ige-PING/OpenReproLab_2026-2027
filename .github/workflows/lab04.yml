@@ -21,7 +21,7 @@ on:
     branches:
       - 'users/**'
     paths:
-      - 'lab04/*'
+      - 'lab04/**'
 jobs:
   Lab04:
     runs-on: ubuntu-latest
