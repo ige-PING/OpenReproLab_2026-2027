@@ -15,6 +15,8 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 
 """
 
+import os
+
 
 def path_of_repo(path=None):
     """Return path of Git repository containing given path.
