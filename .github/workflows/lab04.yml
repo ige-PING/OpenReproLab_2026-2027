@@ -21,7 +21,8 @@ on:
     branches:
       - 'users/**'
     paths:
-      - 'lab04/**'
+      - 'ciscripts/**'
+      - 'labs/04_code-management-01/**'
 jobs:
   Lab04:
     runs-on: ubuntu-latest
