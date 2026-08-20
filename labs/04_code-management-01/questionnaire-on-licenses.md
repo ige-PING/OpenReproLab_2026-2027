@@ -8,5 +8,5 @@
   - [x] Redistribute the software as is.
   - [ ] Claim that I wrote the code myself.
   - [x] Modify the source code to fit my needs.
-  - [x] Redistribute modified version of the software.
+  - [ ] Redistribute modified version of the software.
   - [x] Sell the source code to someone else.
