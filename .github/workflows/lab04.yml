@@ -33,5 +33,5 @@ jobs:
         with:
           persist-credentials: false
       - name: Check work
-        runs: |
+        run: |
           python ciscripts/lab04.py
