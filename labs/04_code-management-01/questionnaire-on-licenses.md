@@ -5,7 +5,7 @@
 
 2. I downloaded the source code of a free and open-source software. I can:
 
-  - [ ] Redistribute the software as is.
+  - [x] Redistribute the software as is.
   - [ ] Claim that I wrote the code myself.
   - [x] Modify the source code to fit my needs.
   - [x] Redistribute modified version of the software.
