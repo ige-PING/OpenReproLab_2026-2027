@@ -17,8 +17,8 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 
 import os
 
-from questionnaire import Questionnaire
 from misctools import part_banner, path_of_repo
+from questionnaire import Questionnaire
 
 # -----------------------------------#
 # Part 1: Questionnaire on licenses #

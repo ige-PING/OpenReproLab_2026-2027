@@ -90,7 +90,7 @@ class Questionnaire:
         """
         self.questions = []
         with open(filepath) as f:
-            lines = [line.strip() for line in f.readlines()]
+            lines = [line.strip() for line in f]
         counter = 1
         for i_line, line in enumerate(lines):
             if len(line) == 0:
