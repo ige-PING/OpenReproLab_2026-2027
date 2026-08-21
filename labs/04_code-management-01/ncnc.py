@@ -518,11 +518,7 @@ def calc_stats(ds, varname):
         (name, value) pairs.
 
     """
-    # This implementation is temporary, it allows me to easily test my own
-    # implementation without commiting it
-    import my_calc_stats
-
-    return my_calc_stats.calc_stats(ds, varname)
+    return {}
 
 
 # -------------------------------------#
