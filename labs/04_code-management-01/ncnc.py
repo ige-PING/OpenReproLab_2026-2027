@@ -480,7 +480,7 @@ class Application:
                 break
             refresh = True
             if key in ("n", "KEY_DOWN"):
-                top = min(top + 1, self.gattrs_nlines - 1)
+                top = min(top + 1, self.gattrs_nlines - curses.LINES + 1)
             elif key in ("p", "KEY_UP"):
                 top = max(top - 1, 0)
             else:
