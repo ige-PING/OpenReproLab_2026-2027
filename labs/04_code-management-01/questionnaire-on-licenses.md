@@ -1,7 +1,7 @@
 1. A piece of software which sources are available online is automatically free and open-source software (FOSS).
 
-  - [x] True
-  - [ ] False
+  - [ ] True
+  - [x] False
 
 2. I downloaded the source code of a free and open-source software. I can:
 
