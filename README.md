@@ -100,7 +100,7 @@ All events will take place at **Maison Climat Planète (MCP)**, on the UGA campu
 | Thursday February 11th 2027, 10am-12pm | Lab 4                                   |
 | Thursday March    11th 2027, 10am-12pm | Lab 5                                   |
 | Thursday April     8th 2027, 10am-12pm | Lab 6                                   |
-| Thursday May       6th 2027, 10am-12pm | Lab 7                                   |
+| Thursday May      13th 2027, 10am-12pm | Lab 7                                   |
 | Thursday May      27th 2027, 10am-11am | Plenary meeting (wrap up of ORL)        |
 
 **Optional instructor-free study sessions** will take place on the Tuesday immediately prior to each lab session, same room, same time (117/118, 10am-12pm).
@@ -112,7 +112,7 @@ All events will take place at **Maison Climat Planète (MCP)**, on the UGA campu
  - Monday February 1st 2027, 2pm-4pm
  - Monday March 1st 2027, 2pm-4pm
  - Monday March 29th 2027, 2pm-4pm
- - Monday April 26th 2027, 2pm-4pm
+ - Monday May 3rd 2027, 2pm-4pm
 
 **Social events** will take place starting at 5pm:
 
