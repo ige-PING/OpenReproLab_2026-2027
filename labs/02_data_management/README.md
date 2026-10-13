@@ -6,6 +6,6 @@ Part 1 of this lab is a short multiple-choice questionnaire on FAIR principles :
 
 # Part 2: Data format
 
-This part is intended to demonstrate that, when a program is built in a modular way, it is possible to modify and improve it without having to understand or even read the entire code.
+
 
 # Part 3: Conventions
