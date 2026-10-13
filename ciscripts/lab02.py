@@ -21,51 +21,75 @@ import sys
 from misctools import part_banner, path_of_repo
 from questionnaire import Questionnaire
 
-# -----------------------------------#
-# Part 1: Questionnaire on licenses #
-# -----------------------------------#
+# ---------------------------------------------#
+# Part 1: Questionnaire on the FAIR principles #
+# ---------------------------------------------#
 
-part_banner(1, "Questionnaire on licenses")
+part_banner(1, "Questionnaire on the FAIR principles")
 
 questionnaire = Questionnaire(
     os.path.join(
         path_of_repo(),
         "labs",
-        "04_code-management-01",
-        "questionnaire-on-licenses.md",
+        "02_data-management",
+        "questionnaire-on-fair.md",
     )
 )
 all_good = questionnaire.check_answers(
     [
         [
-            [1],
+            [0,1,2,3,4,5],
             (
-                "Software is protected by copyright law, so usage is "
-                "restricted if no license is provided, even if the code is "
-                "publicly available. A suitable license may give users "
-                "additional permissions and make the software free and open "
-                "source."
+                "Go check https://www.nature.com/articles/sdata201618"
             ),
         ],
         [
-            [0, 2, 3, 4],
+            [1],
             (
-                "With very few exceptions, you must always give proper credit "
-                "when you re-distribute free and open-source software. In no "
-                "circumstances it is ethical to claim you created something "
-                "that was created by someone else. Most free and open-source "
-                "software licenses allow you to sell the source code (or "
-                "services related to the software) under certain conditions. "
-                "You must accept however that users may decide to obtain the "
-                "software for free from the Internet or from someone else who "
-                "already has a copy of it."
+                "Go check https://www.gofair.foundation/fair-principles"
+            ),
+        ],
+                [
+            [2],
+            (
+                "Go check https://www.gofair.foundation/fair-principles"
+            ),
+        ],
+                [
+            [0],
+            (
+                "Go check https://www.gofair.foundation/fair-principles"
+            ),
+        ],
+                [
+            [2],
+            (
+                "Go check https://www.gofair.foundation/fair-principles"
+            ),
+        ],
+                [
+            [1,2,4],
+            (
+                "Interoperable means the data usually need to be integrated"
+                "with other data. In addition, the data need to interoperate"
+                "with applications or workflows for analysis, storage, and processing."
+            ),
+        ],
+                [
+            [0,1,2,3,4,5],
+            (
+                "Reusable describes data that can be used again, beyond its original purpose."
+                "To be reusable, data not only needs to be described in a way to help others"
+                "understand it, but also must be licensed with a licence that permits reuse."
+                " Furthermore, data must contain information about how it was created - provenance"
+                " - so that others know whether the data can be trusted"
             ),
         ],
     ]
 )
 
 if all_good:
-    print("Lab 04 completed succesfully, congratulations!")
+    print("Lab 02 completed succesfully, congratulations!")
     sys.exit(0)
 else:
     print("Some checks failed, keep at it!")
