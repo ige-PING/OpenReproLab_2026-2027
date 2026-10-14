@@ -31,52 +31,42 @@ questionnaire = Questionnaire(
     os.path.join(
         path_of_repo(),
         "labs",
-        "02_data-management",
+        "02_data_management",
         "questionnaire-on-fair.md",
     )
 )
 all_good = questionnaire.check_answers(
     [
         [
-            [0,1,2,3,4,5],
-            (
-                "Go check https://www.nature.com/articles/sdata201618"
-            ),
+            [0, 1, 2, 3, 4, 5],
+            ("Go check https://www.nature.com/articles/sdata201618"),
         ],
         [
             [1],
-            (
-                "Go check https://www.gofair.foundation/fair-principles"
-            ),
+            ("Go check https://www.gofair.foundation/fair-principles"),
         ],
-                [
+        [
             [2],
-            (
-                "Go check https://www.gofair.foundation/fair-principles"
-            ),
+            ("Go check https://www.gofair.foundation/fair-principles"),
         ],
-                [
+        [
             [0],
-            (
-                "Go check https://www.gofair.foundation/fair-principles"
-            ),
+            ("Go check https://www.gofair.foundation/fair-principles"),
         ],
-                [
+        [
             [2],
-            (
-                "Go check https://www.gofair.foundation/fair-principles"
-            ),
+            ("Go check https://www.gofair.foundation/fair-principles"),
         ],
-                [
-            [1,2,4],
+        [
+            [1, 2, 4],
             (
                 "Interoperable means the data usually need to be integrated"
                 "with other data. In addition, the data need to interoperate"
                 "with applications or workflows for analysis, storage, and processing."
             ),
         ],
-                [
-            [0,1,2,3,4,5],
+        [
+            [0, 1, 2, 3, 4, 5],
             (
                 "Reusable describes data that can be used again, beyond its original purpose."
                 "To be reusable, data not only needs to be described in a way to help others"
