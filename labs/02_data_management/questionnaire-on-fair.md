@@ -10,28 +10,28 @@
   - [x] To force researchers to share research data
 
 
-1. What does the F in FAIR principles stand for ?
+1. What does the F in FAIR principles stand for?
 
   - [ ] Fair
   - [x] Findable
   - [ ] Factorial
   - [ ] Fashionable
 
-1. What does the A in FAIR principles stand for ?
+1. What does the A in FAIR principles stand for?
 
   - [ ] Analysable
   - [ ] Accurate
   - [x] Accessible
   - [ ] Amendable
 
-1. What does the I in FAIR principles stand for ?
+1. What does the I in FAIR principles stand for?
 
   - [x] Interoperable
   - [ ] Identifiable
   - [ ] Informative
   - [ ] Inclusive
 
-1. What does the R in FAIR principles stand for ?
+1. What does the R in FAIR principles stand for?
 
   - [ ] Recognizable
   - [ ] Respectful
