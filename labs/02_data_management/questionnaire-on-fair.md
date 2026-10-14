@@ -13,7 +13,7 @@
 
   - [ ] Fair
   - [x] Findable
-  - [ ] Factorial
+  - [ ] Factorial
   - [ ] Fashionable
 
 3. What does the A in FAIR principles stand for?
@@ -27,7 +27,7 @@
 
   - [x] Interoperable
   - [ ] Identifiable
-  - [ ] Informative
+  - [ ] Informative
   - [ ] Inclusive
 
 5. What does the R in FAIR principles stand for?
