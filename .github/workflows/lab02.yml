@@ -22,8 +22,7 @@ on:
       - 'users/**'
     paths:
       - 'ciscripts/**.py'
-      - 'labs/02_code-management-01/**.py'
-      - 'labs/02_code-management-01/**.md'
+      - 'labs/02_data-management/**'
 jobs:
   Lab02:
     runs-on: ubuntu-latest
