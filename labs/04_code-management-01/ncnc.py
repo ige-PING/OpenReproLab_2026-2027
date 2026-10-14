@@ -129,6 +129,8 @@ class Application:
 
         # Create and show the pad for the list of variables
         lines = self.get_variables()
+        for i in range(curses.LINES):
+            lines.append("")
         self.varlist = curses.newpad(
             len(lines),
             max(max(len(line) for line in lines), self.varlist_width),
@@ -319,7 +321,7 @@ class Application:
         names = []
         values = []
         for name, value in self.ds.attrs.items():
-            for i, line in enumerate(value.split("\n")):
+            for i, line in enumerate(str(value).split("\n")):
                 names.append(name if i == 0 else "")
                 values.append(line)
         names = right_pad_strings(names)
@@ -478,7 +480,7 @@ class Application:
                 break
             refresh = True
             if key in ("n", "KEY_DOWN"):
-                top = min(top + 1, self.gattrs_nlines - 1)
+                top = min(top + 1, self.gattrs_nlines - curses.LINES + 1)
             elif key in ("p", "KEY_UP"):
                 top = max(top - 1, 0)
             else:
@@ -516,11 +518,7 @@ def calc_stats(ds, varname):
         (name, value) pairs.
 
     """
-    # This implementation is temporary, it allows me to easily test my own
-    # implementation without commiting it
-    import my_calc_stats
-
-    return my_calc_stats.calc_stats(ds, varname)
+    return {}
 
 
 # -------------------------------------#

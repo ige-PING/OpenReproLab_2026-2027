@@ -86,7 +86,7 @@ We intend to make OpenReproLab accessible to everyone. If you have a disability 
 
 OpenReproLab is organised by [IGE’s plateforme d’innovation numérique en géosciences (PING)](https://www.ige-grenoble.fr/-Plateforme-pour-la-transition-et-l-Innovation-Numerique-en-Geosciences-PING-).
 
-All events will take place at **Maison Climat Planète (MCP)**, on the UGA campus.
+Unless otherwise noted, all events will take place at **Maison Climat Planète (MCP)**, on the UGA campus.
 
 **Plenary meetings** and **lab sessions** will take place in room 117/118 according to the following schedule:
 
@@ -94,13 +94,13 @@ All events will take place at **Maison Climat Planète (MCP)**, on the UGA campu
 | -------------------------------------- | --------------------------------------- |
 | Thursday October  15th 2026, 10am-11am | Plenary meeting (presentation of ORL)   |
 | Thursday November 19th 2026, 10am-12pm | Lab 1                                   |
-| Thursday December 17th 2026, 10am-12pm | Lab 2                                   |
+| Thursday December 17th 2026, 10am-12pm | Lab 2 (in IMAG building, room 2)        |
 | Thursday January  14th 2027, 10am-12pm | Lab 3                                   |
 | Thursday January  28th 2027, 10am-11am | Plenary meeting (discussing ORL so far) |
 | Thursday February 11th 2027, 10am-12pm | Lab 4                                   |
 | Thursday March    11th 2027, 10am-12pm | Lab 5                                   |
 | Thursday April     8th 2027, 10am-12pm | Lab 6                                   |
-| Thursday May       6th 2027, 10am-12pm | Lab 7                                   |
+| Thursday May      13th 2027, 10am-12pm | Lab 7                                   |
 | Thursday May      27th 2027, 10am-11am | Plenary meeting (wrap up of ORL)        |
 
 **Optional instructor-free study sessions** will take place on the Tuesday immediately prior to each lab session, same room, same time (117/118, 10am-12pm).
@@ -112,7 +112,7 @@ All events will take place at **Maison Climat Planète (MCP)**, on the UGA campu
  - Monday February 1st 2027, 2pm-4pm
  - Monday March 1st 2027, 2pm-4pm
  - Monday March 29th 2027, 2pm-4pm
- - Monday April 26th 2027, 2pm-4pm
+ - Monday May 3rd 2027, 2pm-4pm
 
 **Social events** will take place starting at 5pm:
 
