@@ -7,7 +7,7 @@
   - [x] To make data easier to use for humans
   - [x] To make data easier to use for machines
   - [ ] To make sensitive data openly accessible
-  - [x] To force researchers to share research data
+  - [ ] To force researchers to share research data
 
 2. What does the F in FAIR principles stand for?
 
