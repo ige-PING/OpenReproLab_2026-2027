@@ -9,7 +9,6 @@
   - [ ] To make sensitive data openly accessible
   - [x] To force researchers to share research data
 
-
 1. What does the F in FAIR principles stand for?
 
   - [ ] Fair
