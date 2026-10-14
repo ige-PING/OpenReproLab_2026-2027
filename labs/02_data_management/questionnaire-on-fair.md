@@ -2,12 +2,12 @@
 
   - [x] To reduce the duplication of effort in producing research data
   - [x] To make it easier to verify the results of research
-  - [x]  To allow research data from different sources to be combined for new discoveries
-  - [x]  To extract the maximum benefit from research investment
-  - [x]  To make data easier to use for humans
-  - [x]  To make data easier to use for machines
-  - [ ]  To make sensitive data openly accessible
-  - [x]  To force researchers to share research data
+  - [x] To allow research data from different sources to be combined for new discoveries
+  - [x] To extract the maximum benefit from research investment
+  - [x] To make data easier to use for humans
+  - [x] To make data easier to use for machines
+  - [ ] To make sensitive data openly accessible
+  - [x] To force researchers to share research data
 
 
 1. What does the F in FAIR principles stand for ?
