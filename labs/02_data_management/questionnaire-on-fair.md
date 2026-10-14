@@ -9,35 +9,35 @@
   - [ ] To make sensitive data openly accessible
   - [x] To force researchers to share research data
 
-1. What does the F in FAIR principles stand for?
+2. What does the F in FAIR principles stand for?
 
   - [ ] Fair
   - [x] Findable
   - [ ] Factorial
   - [ ] Fashionable
 
-1. What does the A in FAIR principles stand for?
+3. What does the A in FAIR principles stand for?
 
   - [ ] Analysable
   - [ ] Accurate
   - [x] Accessible
   - [ ] Amendable
 
-1. What does the I in FAIR principles stand for?
+4. What does the I in FAIR principles stand for?
 
   - [x] Interoperable
   - [ ] Identifiable
   - [ ] Informative
   - [ ] Inclusive
 
-1. What does the R in FAIR principles stand for?
+5. What does the R in FAIR principles stand for?
 
   - [ ] Recognizable
   - [ ] Respectful
   - [x] Reusable
   - [ ] Readable
 
-1. What can be done to make data more interoperable? Select all that apply.
+6. What can be done to make data more interoperable? Select all that apply.
 
   - [ ] License it with a Creative Commons licence
   - [x] Use standard vocabularies in data and metadata
@@ -45,7 +45,7 @@
   - [ ] Include clear instructions on how to obtain access in the metadata
   - [x] Make the data self-describing
 
-1. What issues do you need to consider when you are preparing your own data for reuse? Select all that apply.
+7. What issues do you need to consider when you are preparing your own data for reuse? Select all that apply.
 
   - [x] Whether the data might be considered to be sensitive data
   - [x] How you will clearly indicate how others are allowed to use it
