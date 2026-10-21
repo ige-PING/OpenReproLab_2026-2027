@@ -1,4 +1,4 @@
-"""Script to check answers of lab 04 of OpenReproLab 2026-2027.
+"""Script to check answers of lab 03 of OpenReproLab 2026-2027.
 
 Copyright (C) Institut des Géosciences de l'Environnement, Grenoble.
 
@@ -31,7 +31,7 @@ questionnaire = Questionnaire(
     os.path.join(
         path_of_repo(),
         "labs",
-        "04_code-management-01",
+        "03_code-management-01",
         "questionnaire-on-licenses.md",
     )
 )
@@ -65,7 +65,7 @@ all_good = questionnaire.check_answers(
 )
 
 if all_good:
-    print("Lab 04 completed succesfully, congratulations!")
+    print("Lab 03 completed succesfully, congratulations!")
     sys.exit(0)
 else:
     print("Some checks failed, keep at it!")

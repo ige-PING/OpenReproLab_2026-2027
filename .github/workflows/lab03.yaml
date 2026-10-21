@@ -1,4 +1,4 @@
-# Workflow to check work on lab04 of OpenReproLab 2026-2027.
+# Workflow to check work on lab03 of OpenReproLab 2026-2027.
 #
 # Copyright (C) Institut des Géosciences de l'Environnement, Grenoble.
 #
@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU General Public License along with
 # this program. If not, see <https://www.gnu.org/licenses/>.
 
-name: Lab04
+name: Lab03
 on:
   workflow_dispatch:
   push:
@@ -22,10 +22,9 @@ on:
       - 'users/**'
     paths:
       - 'ciscripts/**.py'
-      - 'labs/04_code-management-01/**.py'
-      - 'labs/04_code-management-01/**.md'
+      - 'labs/03_code-management-01/**'
 jobs:
-  Lab04:
+  Lab03:
     runs-on: ubuntu-latest
     steps:
       - name: Clone repository
@@ -34,4 +33,4 @@ jobs:
           persist-credentials: false
       - name: Check work
         run: |
-          python ciscripts/lab04.py
+          python ciscripts/lab03.py

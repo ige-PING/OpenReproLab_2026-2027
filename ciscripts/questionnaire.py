@@ -106,7 +106,7 @@ class Questionnaire:
             elif line.startswith(start_s):
                 self.questions[-1].add_choice(line[len(start_s) :], True)
             else:
-                msg = f"Could not parse line {i_line}: {line}."
+                msg = f"Could not parse line {i_line + 1}: {line}."
                 raise ValueError(msg)
 
     def __repr__(self):
