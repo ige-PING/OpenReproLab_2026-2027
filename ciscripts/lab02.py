@@ -18,7 +18,7 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 import os
 import sys
 
-from misctools import part_banner, path_of_repo
+from misctools import part_banner, path_of_repo, check_url
 from questionnaire import Questionnaire
 
 # ---------------------------------------------#
@@ -88,7 +88,23 @@ all_good = questionnaire.check_answers(
     ]
 )
 
-if all_good:
+   
+# ---------------------------------------------#
+# Part 3: Data Warehouses                      #
+# ---------------------------------------------#
+
+part_banner(3, "Upload of data on zenodo sandbox")
+
+upload_success = check_url(
+    os.path.join(
+        path_of_repo(),
+        "labs",
+        "02_data-management",
+        "zenodo-sandbox-link.md",
+    )
+)
+
+if all_good && upload_success:
     print("Lab 02 completed succesfully, congratulations!")
     sys.exit(0)
 else:
