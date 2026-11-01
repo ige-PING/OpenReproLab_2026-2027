@@ -15,8 +15,7 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 
 """
 
-import os
-import validators
+import os, validators
 
 def path_of_repo(path=None):
     """Return path of Git repository containing given path.
@@ -68,13 +67,13 @@ def part_banner(number, name):
     print(f"#{around_line}#\n{middle_line}\n#{around_line}#\n")
 
 
-def check_url(filepath=None):
-    """Check if url provided in a file is valid.
+def check_url_zenodo_sandbox(filepath=None):
+    """Check if token provided in a file is a valid zenodo sandbox record.
 
     Parameters
     ----------
     path: str
-        A path to a markdown file in which the second line is a url to be checked
+        A path to a markdown file in which the second line is a token to be checked
 
     Returns
     -------
@@ -85,4 +84,4 @@ def check_url(filepath=None):
     with open(filepath) as f:
             lines = [line.strip() for line in f]
 
-    return validators.url(lines[1])
+    return validators.url("https://sandbox.zenodo.org/records/"+lines[1])

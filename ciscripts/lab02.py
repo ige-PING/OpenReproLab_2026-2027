@@ -95,7 +95,7 @@ all_good = questionnaire.check_answers(
 
 part_banner(3, "Upload of data on zenodo sandbox")
 
-upload_success = check_url(
+upload_success = check_url_zenodo_sandbox(
     os.path.join(
         path_of_repo(),
         "labs",
