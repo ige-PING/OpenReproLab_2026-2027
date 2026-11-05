@@ -41,4 +41,4 @@ Open and fill out the [data-format notebook](./data-format.ipynb) and push the u
 
 # Part 3: Data warehouses
 
-Use the sandbox of zenodo to host our newly created data file and provide a "fake" doi for it. Generate a link and put it in [this file](zenodo-sandbox-link.md) so we can check it is a valid zenodo sandbox upload
+Use the [sandbox of zenodo](https://sandbox.zenodo.org/) to host a data file of your own that follows at best the FAIR principles and provide a "fake" doi for it. Generate a link for your data and put it in [this file](zenodo-sandbox-link.md) so we can check it is a valid zenodo sandbox upload
