@@ -73,4 +73,3 @@ class Check:
         self.part = part
         self.result = result
         self.not_ok_tips = not_ok_tips
-
