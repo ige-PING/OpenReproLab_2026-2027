@@ -1,3 +1,5 @@
+This content is released under the terms of the [Creative Commons Attribution Share Alike 4.0 International license](https://creativecommons.org/licenses/by-sa/4.0/).
+
 # Lab 01: ABC of reproducible numerical science
 
 ## Configure git and Github/Gitlab authentication
