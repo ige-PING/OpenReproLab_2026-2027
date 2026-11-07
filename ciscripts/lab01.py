@@ -38,7 +38,7 @@ part_checks.append(
     Check(
         "Create Python script that downloads CSV data",
         os.path.exists(os.path.join(lab_dir, download_data_file)),
-        f'Check that you have added/commited/pushed the "{download_data_file}" within the lab01 directory!'
+        f'Check that you have added/commited/pushed the "{download_data_file}" within the lab01 directory!',
     )
 )
 
