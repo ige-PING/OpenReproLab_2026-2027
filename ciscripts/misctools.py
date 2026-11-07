@@ -75,6 +75,7 @@ class Verificator:
         self.verify_function = verify_function
         self.not_ok_tips = not_ok_tips
 
+
 def verify_lab(verificators: list[Verificator]):
     for index, verificator in enumerate(verificators):
         part_banner(index + 1, verificator.part)
@@ -84,7 +85,7 @@ def verify_lab(verificators: list[Verificator]):
             print(verificator.not_ok_tips)
         print()
 
-    all_good = any([not verificator.verify_function() for verificator in verificators]) # broken
+    all_good = any(not verificator.verify_function() for verificator in verificators)
 
     if all_good:
         print("==> Lab completed succesfully, congratulations!")

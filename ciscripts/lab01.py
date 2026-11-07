@@ -33,8 +33,11 @@ parts.append(
 )
 
 download_data_file = "download-data.py"
+
+
 def check_download_script() -> bool:
     return os.path.exists(os.path.join(lab_dir, download_data_file))
+
 
 parts.append(
     Verificator(
