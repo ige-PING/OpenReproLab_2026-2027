@@ -66,3 +66,10 @@ def part_banner(number, name):
     middle_line = f"# Part {number}: {name} #"
     around_line = "-" * (len(middle_line) - 2)
     print(f"#{around_line}#\n{middle_line}\n#{around_line}#\n")
+
+class Check():
+    def __init__(self, part: str, result: int, not_ok_tips: str):
+        self.part = part,
+        self.result = result
+        self.not_ok_tips = not_ok_tips
+
