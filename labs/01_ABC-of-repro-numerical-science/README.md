@@ -37,8 +37,18 @@ git checkout users/${username}
 
 ## Create Python script that downloads CSV data
 
+The aim of this section is to show how data can be downloaded from the Internet using scripts, as opposed to using a web browser.
+
+We will download the file `data/processed/obs_evangelou2026-revised.csv` from the Zenodo record [GEOS-Chem-IGE/hough2026_atmo-plast-emis_harmonize: v1.0.1](https://zenodo.org/records/23046811). This file contains measurements of atmospheric concentrations of microplastics.
+
+Try to think why it might be better to use a script rather than a web brower to download data from the Internet.
+
 ## Add function that calculates something on the data
 
 ## Move functions to Python module and use it from script
 
 ## Create Jupyter notebook that uses module
+
+## To go a bit further
+
+TODO: git log, commit hash, find the previous version of a file
