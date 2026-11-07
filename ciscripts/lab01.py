@@ -16,44 +16,32 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 """
 
 import os
-import sys
 
-from misctools import Check, part_banner, path_of_repo
+from misctools import Verificator, path_of_repo, verify_lab
 
 lab_dir = os.path.join(path_of_repo(), "labs", "01_ABC-of-repro-numerical-science")
 
-part_checks = []
+parts = []
 
 hello_world_file = "hello-world.txt"
-part_checks.append(
-    Check(
+parts.append(
+    Verificator(
         'Push "Hello world" file to Github/Gitlab from command-line',
-        os.path.exists(os.path.join(lab_dir, hello_world_file)),
+        lambda: os.path.exists(os.path.join(lab_dir, hello_world_file)),
         f'Check that you have added/commited/pushed the "{hello_world_file}" within the lab01 directory!',
     )
 )
 
 download_data_file = "download-data.py"
-part_checks.append(
-    Check(
+def check_download_script() -> bool:
+    return os.path.exists(os.path.join(lab_dir, download_data_file))
+
+parts.append(
+    Verificator(
         "Create Python script that downloads CSV data",
-        os.path.exists(os.path.join(lab_dir, download_data_file)),
+        check_download_script,
         f'Check that you have added/commited/pushed the "{download_data_file}" within the lab01 directory!',
     )
 )
 
-# Checklist summary
-
-for index, check in enumerate(part_checks):
-    part_banner(index + 1, check.part)
-    print(check.not_ok_tips)
-    print()
-
-all_good = any([not result for result in part_checks])
-
-if all_good:
-    print("==> Lab completed succesfully, congratulations!")
-    sys.exit(0)
-else:
-    print("==> Some checks failed, keep at it!")
-    sys.exit(1)
+verify_lab(parts)

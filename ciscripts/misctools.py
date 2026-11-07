@@ -16,6 +16,7 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 """
 
 import os
+import sys
 
 
 def path_of_repo(path=None):
@@ -68,8 +69,26 @@ def part_banner(number, name):
     print(f"#{around_line}#\n{middle_line}\n#{around_line}#\n")
 
 
-class Check:
-    def __init__(self, part: str, result: int, not_ok_tips: str):
+class Verificator:
+    def __init__(self, part: str, verify_function: function, not_ok_tips: str):
         self.part = part
-        self.result = result
+        self.verify_function = verify_function
         self.not_ok_tips = not_ok_tips
+
+def verify_lab(verificators: list[Verificator]):
+    for index, verificator in enumerate(verificators):
+        part_banner(index + 1, verificator.part)
+        if verificator.verify_function():
+            print("OK!")
+        else:
+            print(verificator.not_ok_tips)
+        print()
+
+    all_good = any([not verificator.verify_function() for verificator in verificators]) # broken
+
+    if all_good:
+        print("==> Lab completed succesfully, congratulations!")
+        sys.exit(0)
+    else:
+        print("==> Some checks failed, keep at it!")
+        sys.exit(1)
