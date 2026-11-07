@@ -69,27 +69,47 @@ def part_banner(number, name):
     print(f"#{around_line}#\n{middle_line}\n#{around_line}#\n")
 
 
-class Verificator:
-    def __init__(self, part: str, verify_function: function, not_ok_tips: str):
+class Verifier:
+    """Represent and run a verification check for one part of a lab.
+
+    Parameters
+    ----------
+    part: str
+        The title of the part to be verified.
+    verify_function: function
+        The function returning a bool that will be called to verify the part.
+    not_ok_tips: str
+        The tips to display as feedback if the verification fails.
+
+    """
+
+    def __init__(self, part, verify_function, not_ok_tips):
         self.part = part
         self.verify_function = verify_function
         self.not_ok_tips = not_ok_tips
 
-
-def verify_lab(verificators: list[Verificator]):
-    for index, verificator in enumerate(verificators):
-        part_banner(index + 1, verificator.part)
-        if verificator.verify_function():
-            print("OK!")
-        else:
-            print(verificator.not_ok_tips)
+    def verify(self, index) -> bool:
+        part_banner(index + 1, self.part)
+        is_ok = self.verify_function()
+        print("OK!") if is_ok else print(self.not_ok_tips)
         print()
+        return is_ok
 
-    all_good = any(not verificator.verify_function() for verificator in verificators)
 
-    if all_good:
-        print("==> Lab completed succesfully, congratulations!")
+def verify_lab(verifiers: list[Verifier]):
+    """Run and report the verification checks for each lab part.
+
+    This function should be called at the end of each lab script.
+
+    Parameters
+    ----------
+    Verifiers: list[Verifier]
+        The list of verifier for the lab parts to check.
+    """
+    results = [verifier.verify(index) for index, verifier in enumerate(verifiers)]
+    if all(results):
+        print("==> \\o/ Lab completed succesfully, congratulations!")
         sys.exit(0)
     else:
-        print("==> Some checks failed, keep at it!")
+        print("==> /!\\ Some checks failed, keep at it!")
         sys.exit(1)

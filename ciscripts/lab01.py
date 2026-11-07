@@ -17,7 +17,7 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 
 import os
 
-from misctools import Verificator, path_of_repo, verify_lab
+from misctools import Verifier, path_of_repo, verify_lab
 
 lab_dir = os.path.join(path_of_repo(), "labs", "01_ABC-of-repro-numerical-science")
 
@@ -25,7 +25,7 @@ parts = []
 
 hello_world_file = "hello-world.txt"
 parts.append(
-    Verificator(
+    Verifier(
         'Push "Hello world" file to Github/Gitlab from command-line',
         lambda: os.path.exists(os.path.join(lab_dir, hello_world_file)),
         f'Check that you have added/commited/pushed the "{hello_world_file}" within the lab01 directory!',
@@ -40,7 +40,7 @@ def check_download_script() -> bool:
 
 
 parts.append(
-    Verificator(
+    Verifier(
         "Create Python script that downloads CSV data",
         check_download_script,
         f'Check that you have added/commited/pushed the "{download_data_file}" within the lab01 directory!',
