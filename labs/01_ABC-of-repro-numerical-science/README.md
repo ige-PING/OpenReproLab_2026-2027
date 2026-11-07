@@ -16,7 +16,20 @@ git clone git@github.com:ige-PING/OpenReproLab_2026-2027.git
 
 # Or Gitlab
 git clone git@gricad-gitlab.univ-grenoble-alpes.fr:ping/openreprolab_2026-2027.git
+
+# Move to the OpenReproLab directory
+cd openreprolab_2026-2027
 ```
+
+If you are an OpenReproLab student, run the following commands (replace `${username}` by your Github or Gitlab username):
+
+```sh
+git branch users/${username} origin/users/${username}
+git checkout users/${username}
+```
+
+> [!NOTE]
+> We do not explain what these last commands do, please bear with us here :smiley: :bear:. Suffice it to say that this allows each OpenReproLab student to work without interfering with others. This is a first-time setup: you will not have to run these commands every time.
 
 ## Push "Hello world" file to Github/Gitlab from command-line
 
