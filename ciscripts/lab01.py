@@ -25,18 +25,22 @@ lab_dir = os.path.join(path_of_repo(), "labs", "01_ABC-of-repro-numerical-scienc
 part_checks = []
 
 hello_world_file = "hello-world.txt"
-part_checks.append(Check(
-    'Push "Hello world" file to Github/Gitlab from command-line',
-    os.path.exists(os.path.join(lab_dir, hello_world_file)),
-    f'Check that you have added/commited/pushed the "{hello_world_file}" within the lab01 directory!',
-))
+part_checks.append(
+    Check(
+        'Push "Hello world" file to Github/Gitlab from command-line',
+        os.path.exists(os.path.join(lab_dir, hello_world_file)),
+        f'Check that you have added/commited/pushed the "{hello_world_file}" within the lab01 directory!',
+    )
+)
 
 download_data_file = "download-data.py"
-part_checks.append(Check(
-    "Create Python script that downloads CSV data",
-    os.path.exists(os.path.join(lab_dir, download_data_file)),
-    f'Check that you have added/commited/pushed the "{download_data_file}" within the lab01 directory!'
-))
+part_checks.append(
+    Check(
+        "Create Python script that downloads CSV data",
+        os.path.exists(os.path.join(lab_dir, download_data_file)),
+        f'Check that you have added/commited/pushed the "{download_data_file}" within the lab01 directory!'
+    )
+)
 
 # Checklist summary
 

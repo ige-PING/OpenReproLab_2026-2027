@@ -69,7 +69,7 @@ def part_banner(number, name):
 
 class Check:
     def __init__(self, part: str, result: int, not_ok_tips: str):
-        self.part = part,
+        self.part = part
         self.result = result
         self.not_ok_tips = not_ok_tips
 
