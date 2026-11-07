@@ -104,7 +104,7 @@ def verify_lab(verifiers: list[Verifier]):
     Parameters
     ----------
     Verifiers: list[Verifier]
-        The list of verifier for the lab parts to check.
+        The list of verifiers for the lab parts to check.
     """
     results = [verifier.verify(index) for index, verifier in enumerate(verifiers)]
     if all(results):
