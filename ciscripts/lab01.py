@@ -18,7 +18,7 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 import os
 import sys
 
-from misctools import part_banner, path_of_repo, Check
+from misctools import Check, part_banner, path_of_repo
 
 lab_dir = os.path.join(path_of_repo(), "labs", "01_ABC-of-repro-numerical-science")
 
