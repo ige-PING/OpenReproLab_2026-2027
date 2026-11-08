@@ -43,7 +43,7 @@ This first exercise aims to teach you the basics of using Git and Github/Gitlab.
 First, create a text file named "hello-world.txt" that contains the text "Welcome to OpenReproLab!". This file must be located in lab 01's directory.
 
 > [!TIP]
-> Now is a good time to practice using `less` and `cat` to view the content of the file you just created.
+> Now is a good time to practise using `less` and `cat` to view the content of the file you just created.
 
 Now onto the fun part: using the command-line, you will add this file to your Git repository and send it to Github/Gitlab. This process is akin to sending remote-sensing equipment into orbit, which is, as we all know, a four-step process:
 
