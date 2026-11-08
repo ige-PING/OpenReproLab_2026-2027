@@ -18,7 +18,7 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 import os
 import sys
 
-from orlcitools import part_banner, path_of_repo, Questionnaire
+from orlcitools import Questionnaire, part_banner, path_of_repo
 
 # ---------------------------------------------#
 # Part 1: Questionnaire on the FAIR principles #

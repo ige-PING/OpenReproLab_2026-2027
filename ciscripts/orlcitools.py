@@ -17,7 +17,6 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 
 import os
 import sys
-
 from collections import namedtuple
 
 VerifiedResult = namedtuple("VerifiedResult", "ok feedback")
