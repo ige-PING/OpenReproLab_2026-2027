@@ -18,6 +18,10 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 import os
 import sys
 
+from collections import namedtuple
+
+VerifiedResult = namedtuple("VerifiedResult", "ok feedback")
+
 
 def path_of_repo(path=None):
     """Return path of Git repository containing given path.
@@ -53,20 +57,18 @@ def path_of_repo(path=None):
         return path_of_repo(parent)
 
 
-def part_banner(number, name):
-    """Print a banner to indicate the part of the lab being checked.
+def print_banner(name):
+    """Print a banner, typically to indicate the part of the lab being checked.
 
     Parameters
     ----------
-    number: int
-        The number of the part being checked (eg. part 1, part 2).
     name: str
         The name of the part.
 
     """
-    middle_line = f"# Part {number}: {name} #"
+    middle_line = f"# {name} #"
     around_line = "-" * (len(middle_line) - 2)
-    print(f"#{around_line}#\n{middle_line}\n#{around_line}#\n")
+    print(f"\n#{around_line}#\n{middle_line}\n#{around_line}#\n")
 
 
 class Verifier:
@@ -74,29 +76,40 @@ class Verifier:
 
     Parameters
     ----------
-    part: str
+    title: str
         The title of the part to be verified.
     verify_function: function
-        The function returning a bool that will be called to verify the part.
-    not_ok_tips: str
-        The tips to display as feedback if the verification fails.
+        The function that will be called to verify the part. This function
+        should return a VerifiedResult instance.
 
     """
 
-    def __init__(self, part, verify_function, not_ok_tips):
-        self.part = part
+    def __init__(self, title, verify_function):
+        self.title = title
         self.verify_function = verify_function
-        self.not_ok_tips = not_ok_tips
 
-    def verify(self, index) -> bool:
-        part_banner(index + 1, self.part)
-        is_ok = self.verify_function()
-        print("OK!") if is_ok else print(self.not_ok_tips)
-        print()
-        return is_ok
+    def verify(self):
+        """Run verification and print feedback.
+
+        Returns
+        -------
+        VerifiedResult
+            The outcome of the verification.
+
+        """
+        print_banner(self.title)
+        result = self.verify_function()
+        if result.feedback is not None and result.feedback.strip() != "":
+            print(result.feedback)
+            print()
+        if result.ok:
+            print("Part completed successfully!")
+        else:
+            print("Some checks failed for this part, try again!")
+        return result.ok
 
 
-def verify_lab(verifiers: list[Verifier]):
+def verify_lab(verifiers):
     """Run and report the verification checks for each lab part.
 
     This function should be called at the end of each lab script.
@@ -104,14 +117,16 @@ def verify_lab(verifiers: list[Verifier]):
     Parameters
     ----------
     Verifiers: list[Verifier]
-        The list of verifiers for the lab parts to check.
+        The list of verifiers for the lab.
+
     """
-    results = [verifier.verify(index) for index, verifier in enumerate(verifiers)]
+    results = [verifier.verify() for verifier in verifiers]
+    print_banner("Summary for the entire lab")
     if all(results):
-        print("==> \\o/ Lab completed succesfully, congratulations!")
+        print("==> Lab completed succesfully, congratulations!")
         sys.exit(0)
     else:
-        print("==> /!\\ Some checks failed, keep at it!")
+        print("==> Some checks failed, keep at it!")
         sys.exit(1)
 
 

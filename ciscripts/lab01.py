@@ -17,34 +17,65 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 
 import os
 
-from orlcitools import Verifier, path_of_repo, verify_lab
+from orlcitools import VerifiedResult, Verifier, path_of_repo, verify_lab
 
-lab_dir = os.path.join(path_of_repo(), "labs", "01_ABC-of-repro-numerical-science")
+dir_lab = os.path.join(
+    path_of_repo(),
+    "labs",
+    "01_ABC-of-repro-numerical-science",
+)
 
-parts = []
+verifiers = []
 
-hello_world_file = "hello-world.txt"
-parts.append(
+
+# ----------- #
+# Hello World #
+# ----------- #
+
+
+def verify_hello_world():
+    """Verifier function for the Hello World part."""
+    filename = "hello-world.txt"
+    filepath = os.path.join(dir_lab, filename)
+    try:
+        f = open(filepath)
+    except:
+        result = VerifiedResult(
+            False,
+            (
+                f'Could not open file "{filename}". It might not exist or '
+                "it might be in an unexpected location."
+            ),
+        )
+    else:
+        content = f.read()
+        for c in " \t\n!-_":
+            content = content.replace(c, "")
+        if content.lower() == "welcometoopenreprolab":
+            result = VerifiedResult(True, None)
+        else:
+            result = VerifiedResult(
+                False,
+                f'File "{filename}" was found but its content is incorrect.',
+            )
+    try:
+        f.close()
+    except:
+        pass
+    return result
+
+
+verifiers.append(
     Verifier(
-        'Push "Hello world" file to Github/Gitlab from command-line',
-        lambda: os.path.exists(os.path.join(lab_dir, hello_world_file)),
-        f'Check that you have added/commited/pushed the "{hello_world_file}" within the lab01 directory!',
+        'Push "Hello World" file to Github/Gitlab from command-line',
+        verify_hello_world,
     )
 )
 
-download_data_file = "download-data.py"
+
+# ---------------------------- #
+# Run checks on the entire lab #
+# ---------------------------- #
 
 
-def check_download_script() -> bool:
-    return os.path.exists(os.path.join(lab_dir, download_data_file))
-
-
-parts.append(
-    Verifier(
-        "Create Python script that downloads CSV data",
-        check_download_script,
-        f'Check that you have added/commited/pushed the "{download_data_file}" within the lab01 directory!',
-    )
-)
-
-verify_lab(parts)
+verify_lab(verifiers)
