@@ -40,7 +40,7 @@ git checkout user/${username}
 
 This first exercise aims to teach you the basics of using Git and Github/Gitlab.
 
-First, create a text file named "hello-world.txt" that contains the text "Welcome to OpenReproLab!". This file must be located in lab 01's directory.
+First, create a text file named `hello-world.txt` that contains the text "Welcome to OpenReproLab!". This file must be located in lab 01's directory.
 
 > [!TIP]
 > Now is a good time to practise using `less` and `cat` to view the content of the file you just created.
@@ -52,9 +52,9 @@ Now onto the fun part: using the command-line, you will add this file to your Gi
  3. Lock the door of the spaceship when you are sure it is ready.
  4. Send the spaceship into orbit.
 
-**1. List equipment:** Use to the command `git status` to list all the files that are not currently added to your Git repository. Your new file "hello-world.txt" should be listed in the _Untracked files_ section.
+**1. List equipment:** Use to the command `git status` to list all the files that are not currently added to your Git repository. Your new file `hello-world.txt` should be listed in the _Untracked files_ section.
 
-**2. Load equipment in spaceship:** Use the command `git add /path/to/file` to mark a given file as "ready to be committed" to the spaceship. Once done, feel free to use the `git status` command again to make sure that your "hello-world.txt" file is indeed listed in the _Changes to be committed_ section.
+**2. Load equipment in spaceship:** Use the command `git add /path/to/file` to mark a given file as "ready to be committed" to the spaceship. Once done, feel free to use the `git status` command again to make sure that your `hello-world.txt` file is indeed listed in the _Changes to be committed_ section.
 
 **3. Lock the door:** Use the command `git commit -m "Some useful information about the mission"` to tell Git that you have made up your mind and that the ship is ready for launch.
 
@@ -68,11 +68,13 @@ In OpenReproLab, we created a mechanism that automatically verifies that your la
 
 To do so, use your web browser to navigate to the OpenReproLab repository on Github, then click on _Actions_ (located towards the top of the page).
 
-You will be presented with a long list of so-called workflow results. We recommend you filter the list to only show workflows that have been ran on your branch (`user/${username}`). You should then see that a workflow named `Lab01` as been run on your latest commit. A green tick icon will indicate that all parts of Lab01 have been completed successfully.
+You will be presented with a long list of so-called workflow results. To only display relevant results, Click on "Lab01" in the left-hand-side column, then filter the list to only show workflows that have been ran on your branch (`user/${username}`).
+
+You should now see that a workflow named `Lab01` has been run on your latest commit. A green tick icon will indicate that all parts of Lab01 have been completed successfully.
 
 This cannot yet be the case however, because you have only worked on the first part so far. You should therefore see a red-cross mark. Click on the workflow and explore the logs to see whether you successfully completed part 1.
 
-If you did not succeed, go back to the previous part, modify "hello-world.txt" accordingly, and send your changes to Github/Gitlab using the `add`-`commit`-`push` workflow until you succeed.
+If you did not succeed, go back to the previous part, modify `hello-world.txt` accordingly, and send your changes to Github/Gitlab using the `add`-`commit`-`push` workflow until you succeed.
 
 ## Create Python script that downloads CSV data
 
