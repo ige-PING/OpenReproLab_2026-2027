@@ -78,9 +78,9 @@ If you did not succeed, go back to the previous part, modify `hello-world.txt` a
 
 ## Create Python script that downloads CSV data
 
-The aim of this section is to show how data can be downloaded from the Internet using scripts, as opposed to using a web browser.
+The aim of this section is to show how data can be downloaded from the Internet using scripts, as opposed to using a web browser. We aim to show that using scripts is more reproducible.
 
-We will download the file `data/processed/obs_evangelou2026-revised.csv` from the Zenodo record [GEOS-Chem-IGE/hough2026_atmo-plast-emis_harmonize: v1.0.1](https://zenodo.org/records/23046811). This file contains measurements of atmospheric concentrations of microplastics.
+For this exercise, you will download the file `data/processed/obs_evangelou2026-revised.csv` from the Zenodo record [GEOS-Chem-IGE/hough2026_atmo-plast-emis_harmonize: v1.0.1](https://zenodo.org/records/23046811). This file contains measurements of atmospheric concentrations of microplastics.
 
 Try to think why it might be better to use a script rather than a web browser to download data from the Internet.
 
