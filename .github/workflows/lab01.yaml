@@ -24,7 +24,7 @@ on:
       - 'ciscripts/**.py'
       - 'labs/01_ABC-of-repro-numerical-science/**'
 jobs:
-  Lab02:
+  Lab01:
     runs-on: ubuntu-latest
     steps:
       - name: Clone repository
