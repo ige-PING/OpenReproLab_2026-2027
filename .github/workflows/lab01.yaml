@@ -21,7 +21,8 @@ on:
     branches:
       - 'user/**'
     paths:
-      - 'ciscripts/**.py'
+      - 'ciscripts/orlcitools.py'
+      - 'ciscripts/lab01.py'
       - 'labs/01_ABC-of-repro-numerical-science/**'
 jobs:
   Lab01:
