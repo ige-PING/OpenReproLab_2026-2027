@@ -93,7 +93,7 @@ def verify_download_data():
         f = open(ignorepath)
     except:
         return VerifiedResult(False, could_not_open_file % ignorename)
-    lines = [line.strip() for line in f.readlines()]
+    lines = [line.strip() for line in f]
     try:
         f.close()
     except:
@@ -118,7 +118,7 @@ def verify_download_data():
                 "it might be in an unexpected location."
             ),
         )
-    lines = [line.strip() for line in f.readlines()]
+    lines = [line.strip() for line in f]
     try:
         f.close()
     except:
