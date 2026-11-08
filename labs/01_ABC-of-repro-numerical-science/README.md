@@ -26,8 +26,8 @@ cd openreprolab_2026-2027
 If you are an OpenReproLab student, run the following commands (replace `${username}` by your Github or Gitlab username):
 
 ```sh
-git branch users/${username} origin/users/${username}
-git checkout users/${username}
+git branch user/${username} origin/user/${username}
+git checkout user/${username}
 ```
 
 > [!NOTE]

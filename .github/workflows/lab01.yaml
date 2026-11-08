@@ -1,4 +1,4 @@
-# Workflow to check work on lab04 of OpenReproLab 2026-2027.
+# Workflow to check work on lab01 of OpenReproLab 2026-2027.
 #
 # Copyright (C) Institut des Géosciences de l'Environnement, Grenoble.
 #
@@ -19,7 +19,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - 'users/**'
+      - 'user/**'
     paths:
       - 'ciscripts/**.py'
       - 'labs/01_ABC-of-repro-numerical-science/**'

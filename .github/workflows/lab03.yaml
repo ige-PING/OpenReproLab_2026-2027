@@ -19,7 +19,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - 'users/**'
+      - 'user/**'
     paths:
       - 'ciscripts/**.py'
       - 'labs/03_code-management-01/**'
