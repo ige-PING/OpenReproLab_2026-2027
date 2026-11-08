@@ -153,7 +153,10 @@ print(f"Average atmospheric microplastics composition = f{conc_avg:.4f} particle
 print(f"Average microplastics deposition rate = f{dep_avg:.0f} particles/m2/d")
 ```
 
-Run your notebook, commit it, and push it to Github/Gitlab. Please ensure to properly cite the data set in your notebook!
+Before you commit and push your notebook to Github/Gitlab. Please make sure to:
+
+ - Properly cite the dataset directly in your notebook, by mentioning, at the very least, its DOI.
+ - Add `.ipynb_checkpoints` to your `.gitignore` file to prevent commiting this directory (it is automatically created by Jupyter when running notebooks, but should never be committed).
 
 > [!IMPORTANT]
 > In this section you have learned:
@@ -207,4 +210,8 @@ Push the updated version of `quizz.md` to Github/Gitlab to check your answers.
 
 ## Conclusion
 
-Well done! You have now hands-on experience in using basic Git commands and basic Python functionality, and hopefully a better understanding of how to use these tools to make your work more reproducible.
+Well done! You have now hands-on experience on using basic Git commands and basic Python functionality. You should also have a better understanding of how to use these tools to make your work more reproducible. Note that you have used three methods of using Python code:
+
+ - a script: a series of instructions that are executed sequentially
+ - a Jupyter notebook: a series of instructions that are executed sequentially, which integrated display of outputs (text and graphics)
+ - a module: a file containing one or more functions that can be called from other places (scripts, notebooks, other modules)
