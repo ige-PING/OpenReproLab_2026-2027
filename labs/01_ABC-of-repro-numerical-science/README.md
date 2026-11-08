@@ -64,7 +64,15 @@ You can now use your web browser to make sure that your file has been properly u
 
 ## Check that the previous part was done correctly
 
-In OpenReproLab, we created a mechanism that automatically verifies that your lab work is correct.
+In OpenReproLab, we created a mechanism that automatically verifies that your lab work is correct. So let us go find out now if you did the previous part correctly!
+
+To do so, use your web browser to navigate to the OpenReproLab repository on Github, then click on _Actions_ (located towards the top of the page).
+
+You will be presented with a long list of so-called workflow results. We recommend you filter the list to only show workflows that have been ran on your branch (`user/${username}`). You should then see that a workflow named `Lab01` as been run on your latest commit. A green tick icon will indicate that all parts of Lab01 have been completed successfully.
+
+This cannot yet be the case however, because you have only worked on the first part so far. You should therefore see a red-cross mark. Click on the workflow and explore the logs to see whether you successfully completed part 1.
+
+If you did not succeed, go back to the previous part, modify "hello-world.txt" accordingly, and send your changes to Github/Gitlab using the `add`-`commit`-`push` workflow until you succeed.
 
 ## Create Python script that downloads CSV data
 
