@@ -1,4 +1,4 @@
-1. With Git, I keep a record of every file I ever committed, even if I remove or overwrite the file in a later commit.
+1. With Git, do I keep a record of every file I ever committed, even if I remove or overwrite the file in a later commit?
 
  - [ ] Yes.
  - [ ] No.
@@ -49,3 +49,8 @@
  - [ ] A script/module keeps a written track of what was actually downloaded (ie. it acts as documentation).
  - [ ] A script/module makes it easier for others to reproduce my work.
  - [ ] If I use a script or a module, I can print it out on paper to share it with my colleagues.
+
+9. Is Git the only existing version-control system?
+
+ - [ ] Yes.
+ - [ ] No.

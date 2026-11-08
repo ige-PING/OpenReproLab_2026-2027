@@ -212,6 +212,6 @@ Push the updated version of `quizz.md` to Github/Gitlab to check your answers.
 
 Well done! You have now hands-on experience on using basic Git commands and basic Python functionality. You should also have a better understanding of how to use these tools to make your work more reproducible. Note that you have used three methods of using Python code:
 
- - a script: a series of instructions that are executed sequentially
- - a Jupyter notebook: a series of instructions that are executed sequentially, which integrated display of outputs (text and graphics)
- - a module: a file containing one or more functions that can be called from other places (scripts, notebooks, other modules)
+ - A script: a series of instructions that are executed sequentially
+ - A Jupyter notebook: a series of instructions that are executed sequentially, with integrated display of outputs (text and graphics)
+ - A module: a file containing one or more functions that can be called from other places (scripts, notebooks, other modules)
