@@ -62,6 +62,12 @@ Now onto the fun part: using the command-line, you will add this file to your Gi
 
 You can now use your web browser to make sure that your file has been properly uploaded to Github/Gitlab.
 
+> [!IMPORTANT]
+> In this section you have learned:
+> - How to clone a repository from Github/Gitlab
+> - How to add a file to a local repository (add and commit)
+> - How to send your updating repository to Github/Gitlab (push)
+
 ## Check that the previous part was done correctly
 
 In OpenReproLab, we created a mechanism that automatically verifies that your lab work is correct. So let us go find out now if you did the previous part correctly!
@@ -76,13 +82,62 @@ This cannot yet be the case however, because you have only worked on the first p
 
 If you did not succeed, go back to the previous part, modify `hello-world.txt` accordingly, and send your changes to Github/Gitlab using the `add`-`commit`-`push` workflow until you succeed.
 
+> [!IMPORTANT]
+> In this section you have learned:
+> - How to check the outputs of our lab-checking facilities
+
 ## Create Python script that downloads CSV data
 
-The aim of this section is to show how data can be downloaded from the Internet using scripts, as opposed to using a web browser. We aim to show that using scripts is more reproducible.
+As a preliminary exercise, run the `git log` command from inside your repository and try to make sense of what you see by answering the following questions for yourself (ask a peer or an instructor for explanations if needed):
 
-For this exercise, you will download the file `data/processed/obs_evangelou2026-revised.csv` from the Zenodo record [GEOS-Chem-IGE/hough2026_atmo-plast-emis_harmonize: v1.0.1](https://zenodo.org/records/23046811). This file contains measurements of atmospheric concentrations of microplastics.
+ - What is a commit?
+ - What is a commit hash?
+ - Who made these other commits that you are seeing?
 
-Try to think why it might be better to use a script rather than a web browser to download data from the Internet.
+The goal of this section is to show how data can be downloaded from the Internet using scripts, as opposed to using a web browser. We aim to show that using scripts is more reproducible.
+
+For this exercise, you will download the file corresponding to `data/processed/obs_evangelou2026-revised.csv` from the Zenodo record [GEOS-Chem-IGE/hough2026_atmo-plast-emis_harmonize: v1.0.1](https://zenodo.org/records/23046811). This file contains measurements of atmospheric concentrations of microplastics.
+
+To do so:
+
+ - Modify the script `download-micro-plastics-data.py` as necessary (read comments for more information).
+ - Run the script using `python3 download-micro-plastics-data.py`.
+ - Verify that the file has been downloaded and take a look inside it.
+
+Try to think of at least three reasons why it might be better to use a script rather than a web browser to download data from the Internet.
+
+Also, why is it important for reproducibility to specify explicitly which commit we want to download the data from?
+
+> [!IMPORTANT]
+> In this section you have learned:
+> - How to modify an existing Python script
+> - How to run a Python script
+> - How to use Python to download a specific file from Github
+
+## Add this script to Github/Gitlab without adding the data itself
+
+Now that the script seems to be working, we want to commit it and send it to GitHub/Gitlab.
+
+If you run `git status`, you should see that:
+
+ - There is a new untracked file called `obs_evangelou2026-revised.csv`. It is the file that the script downloaded.
+ - Git knows that the file `download-micro-plastics-data.py`.
+
+We want to commit the modified script but **not** the CSV data file. These data are already available from Github and we do not want to create unnecessary entropy by duplicating them. We will therefore tell Git that this file should not be tracked. To do that, create a file name `.gitignore` in lab 01's directory with the following content:
+
+```
+# Ignore the data file downloaded by the script
+obs_evangelou2026-revised.csv
+```
+Run `git status` again to make sure that Git now ignores this file.
+
+As mentionned before, Git has noticed that you have modified the Python script. Use `git diff download-micro-plastics-data.py` to review your changes. Once you are satisfied with your changes: add, commit, and push both the `.gitignore` file and the modified script. Make sure your work passes our tests for this section before moving on to the next one.
+
+> [!IMPORTANT]
+> In this section you have learned:
+> - How to create `.gitignore` files to prevent tracking unwanted files
+> - How to use `git diff` to see ongoing modifications
+> - How to commit and push modified files
 
 ## Add function that calculates something on the data
 
