@@ -121,7 +121,7 @@ Now that the script seems to be working, we want to commit it and send it to Git
 If you run `git status`, you should see that:
 
  - There is a new untracked file called `obs_evangelou2026-revised.csv`. It is the file that the script downloaded.
- - Git knows that the file `download-micro-plastics-data.py`.
+ - Git knows that the file `download-micro-plastics-data.py` has been modified.
 
 We want to commit the modified script but **not** the CSV data file. These data are already available from Github and we do not want to create unnecessary entropy by duplicating them. We will therefore tell Git that this file should not be tracked. To do that, create a file name `.gitignore` in lab 01's directory with the following content:
 
