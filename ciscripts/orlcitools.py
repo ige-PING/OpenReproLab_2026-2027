@@ -216,7 +216,7 @@ class Questionnaire:
                 counter += 1
             elif line.startswith(start_a):
                 self.questions[-1].add_choice(line[len(start_a) :], False)
-            elif line.startswith(start_s):
+            elif line.startswith(start_s) or line.startswith(start_s.upper()):
                 self.questions[-1].add_choice(line[len(start_s) :], True)
             else:
                 msg = f"Could not parse line {i_line + 1}: {line}."
