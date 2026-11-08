@@ -139,12 +139,6 @@ As mentionned before, Git has noticed that you have modified the Python script. 
 > - How to use `git diff` to see ongoing modifications
 > - How to commit and push modified files
 
-## Add function that calculates something on the data
+## Create a Jupyter notebook that plots microplastics data
 
-## Move functions to Python module and use it from script
-
-## Create Jupyter notebook that uses module
-
-## To go a bit further
-
-TODO: git log, commit hash, find the previous version of a file
+## Multiple-choice quizz on what you learned in this lab
