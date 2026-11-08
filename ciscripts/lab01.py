@@ -17,7 +17,7 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 
 import os
 
-from misctools import Verifier, path_of_repo, verify_lab
+from orlcitools import Verifier, path_of_repo, verify_lab
 
 lab_dir = os.path.join(path_of_repo(), "labs", "01_ABC-of-repro-numerical-science")
 
