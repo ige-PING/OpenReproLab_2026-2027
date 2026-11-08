@@ -4,12 +4,10 @@ This content is released under the terms of the [Creative Commons Attribution Sh
 
 ## Configure git and Github/Gitlab authentication
 
-Your first tasks are to:
+Follow [these instructions](./setting-up-git-github-gitlab.md) to:
 
  - Configure Git on your platform
  - Configure authenticated access to Github or Gitlab via the command-line.
-
-To do so, follow [these instructions](./setting-up-git-github-gitlab.md).
 
 ## Clone OpenReproLab repository
 
