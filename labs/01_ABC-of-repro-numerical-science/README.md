@@ -114,7 +114,7 @@ Also, why is it important for reproducibility to specify explicitly which commit
 
 ## Add this script to Github/Gitlab without adding the data itself
 
-Now that the script seems to be working, we want to commit it and send it to GitHub/Gitlab.
+Now that the script seems to be working, we want to commit it and send it to Github/Gitlab.
 
 If you run `git status`, you should see that:
 
@@ -133,10 +133,78 @@ As mentionned before, Git has noticed that you have modified the Python script. 
 
 > [!IMPORTANT]
 > In this section you have learned:
-> - How to create `.gitignore` files to prevent tracking unwanted files
+> - How to create `.gitignore` files to prevent Git from tracking unwanted files
 > - How to use `git diff` to see ongoing modifications
 > - How to commit and push modified files
 
 ## Create a Jupyter notebook that plots microplastics data
 
+Now that you have downloaded scientific data in a reproducible manner, create a Python-based Jupyter notebook to show the atmospheric concentration of microplastics as a function of year. Create another plot showing atmospheric deposition rates as a function of year.
+
+> [!TIP]
+> Use `pandas` to read the data and `matplotlib` to plot it. Ask a peer or an instructor if needed.
+
+Also print out in your notebook the average values of these two quantities, using the following code:
+
+```Python
+conc_avg = # You have to calculate it
+dep_avg = # You have to calculate it
+print(f"Average atmospheric microplastics composition = f{conc_avg:.4f} particles/m3")
+print(f"Average microplastics deposition rate = f{dep_avg:.0f} particles/m2/d")
+```
+
+Run your notebook, commit it, and push it to Github/Gitlab. Please ensure to properly cite the data set in your notebook!
+
+> [!IMPORTANT]
+> In this section you have learned:
+> - How to create a Jupyter notebook
+
+## Introduction to modularization
+
+At this stage, your notebook plots and analyzes data, with appropriate citation. However, a user that is not very conscientious could download the wrong data file, run your notebook, and obtain different results. What can be done to improve reproducibility in this case?
+
+One way to do so is to make it more explicit in your notebook from where and how you downloaded the data. Here we ask you to create a file named `lab01utils.py` that contains a function with the following header:
+
+```Python
+download_file_from_github(repository, commit, filepath):
+    """Download specific file from Github repository.
+
+    Parameters
+    ----------
+    repository: str
+        Name of the repository.
+    commit: str
+        Commit of interest (full hash).
+    filepath
+        File of interest within repository.
+
+    """
+    # Your job is to implement this function.
+```
+
+Modify your notebook to import this function using:
+
+```Python
+from lab01utils import download_file_from_github
+```
+
+Now call this function to download the dataset from your notebook before you start analyzing and plotting it.
+
+You just made your work more reproducible! Now your notebook shows explicitly what exact file you are using in your analysis.
+
+Push your `lab01utils.py` and your updated notebook to Github/Gitlab.
+
+> [!IMPORTANT]
+> In this section you have learned:
+> - How to create a Python module that contains reusable utility functions
+> - How to use this module from a notebook
+
 ## Multiple-choice quizz on what you learned in this lab
+
+To finish this lab, fill out the quizz by adding the letter `x` in file `quizz.md` to indicate correct answers.
+
+Push the updated version of `quizz.md` to Github/Gitlab to check your answers.
+
+## Conclusion
+
+Well done! You have now hands-on experience in using basic Git commands and basic Python functionality, and hopefully a better understanding of how to use these tools to make your work more reproducible.
