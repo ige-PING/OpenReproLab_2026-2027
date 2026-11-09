@@ -10,9 +10,11 @@
 
 ## Git
 
-Git is a very useful tool for every day research work: it helps keep track of all past versions of files without cluttering the file systems with names such as `document_v2.txt`, `document_final.txt`.
+Git is a useful tool for every day research work: it helps keep track of all past versions of files without cluttering the file systems with names such as `document_v2.txt`, `document_final.txt`.
 
 Git is useful for reproducibility: it retains a full history of all the files ever committed, along with metadata such as who made changes to which files and when. Besides, a Git commit hash uniquely identifies a specific version of a given file.
+
+Git was initially created with software development in mind, but it can track all kinds of files.
 
 Git and online platforms such as Github and Gitlab are also very helpful when many people collaborate on the same project. This will be the topic of lab 05.
 
@@ -20,7 +22,11 @@ Note that Git is not the only version-control systems. There are others such as 
 
 ## Fetching online data
 
-When possible, it is preferable to use scripts rather than web interfaces to download data files. A script can be self-documenting, can be version-controlled with Git, and can be easily shared with others so that they can reproduce our work. Lab 02 will present reproducible ways to share software.
+When possible, it is preferable to use scripts rather than web interfaces to download data files. A script:
+ - Retains information about the provenance of the data
+ - Can be self-documenting
+ - Can be version-controlled with Git
+ - Can be easily shared with others so that they can reproduce our work (lab 02 will present reproducible ways to share software)
 
 ## Organizing Python code
 
@@ -30,3 +36,4 @@ Python Code that is meant to be reused should be packaged into functions (or cla
 
  - [Summary of useful shell commands](https://www.freecodetutorials.com/tutorials/devops/command-line-basics/).
  - [A quick overview of the main Git commands](https://rogerdudler.github.io/git-guide/), for people who already have a basic understanding of Git.
+ - [Git cheat sheet](https://git-scm.com/cheat-sheet)
