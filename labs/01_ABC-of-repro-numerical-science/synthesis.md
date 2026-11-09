@@ -20,7 +20,7 @@ Git and online platforms such as Github and Gitlab are also very helpful when ma
 
 Note that Git is not the only version-control systems. There are others such as [mercurial](https://www.mercurial-scm.org/). We chose Git because it is currently the most widely used.
 
-## Fetching online data
+## Fetching data from the Internet
 
 When possible, it is preferable to use scripts rather than web interfaces to download data files. A script:
  - Retains information about the provenance of the data
