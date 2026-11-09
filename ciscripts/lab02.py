@@ -1,4 +1,4 @@
-"""Script to check answers of lab 04 of OpenReproLab 2026-2027.
+"""Script to check answers of lab 02 of OpenReproLab 2026-2027.
 
 Copyright (C) Institut des Géosciences de l'Environnement, Grenoble.
 
@@ -20,6 +20,7 @@ import sys
 
 from misctools import part_banner, path_of_repo, check_url
 from questionnaire import Questionnaire
+from check_notebook import Notebook
 
 # ---------------------------------------------#
 # Part 1: Questionnaire on the FAIR principles #
@@ -88,6 +89,41 @@ all_good = questionnaire.check_answers(
     ]
 )
 
+# ---------------------------------------------#
+# Part 2: Data format #
+# ---------------------------------------------#
+
+part_banner(2, "Data format")
+
+data_format_notebook = Notebook(
+    os.path.join(
+        path_of_repo(),
+        "labs",
+        "02_data-management",
+        "data_format.ipynb",
+    )
+)
+
+answers_data_format_notebook = Notebook(
+    os.path.join(
+        path_of_repo(),
+        "ciscripts",
+        "data_format_answers.ipynb",
+    )
+)
+
+comparison_data_format = Comparison(data_format_notebook, answers_data_format_notebook)
+
+all_good = comparison_data_format.check_answers(
+    [
+        ("1.1","code",0),
+        ("1.2","code",1),
+        ("1.3","raw",0),
+        ("1.4","code",2),
+        ("1.5","file","data/newprecip.txt"),
+        ("1.6","raw",1),
+    ]
+)
    
 # ---------------------------------------------#
 # Part 3: Data Warehouses                      #
