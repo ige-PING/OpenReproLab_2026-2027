@@ -12,7 +12,7 @@
 
 Git is a very useful tool for every day research work: it helps keep track of all past versions of files without cluttering the file systems with names such as `document_v2.txt`, `document_final.txt`.
 
-Git is also useful for reproducibility: a commit hash uniquely identifies a specific version of a given file.
+Git is useful for reproducibility: a commit hash uniquely identifies a specific version of a given file.
 
 Git and online platforms such as Github and Gitlab are also very helpful when many people collaborate on the same project. This will be the topic of lab 05.
 
@@ -24,7 +24,7 @@ When possible, it is preferable to use scripts rather than web interfaces to dow
 
 ## Organizing Python code
 
-Python Code that is meant to be reused should be packaged into functions (or classes -- but we will not cover this topic in OpenReproLab) inside modules. These modules can be import from scripts, from notebooks, or even from other modules.
+Python Code that is meant to be reused should be packaged into functions (or classes -- but we will not cover this topic in OpenReproLab) inside modules. These modules can be imported from scripts, from notebooks, or even from other modules.
 
 # Other resources
 
