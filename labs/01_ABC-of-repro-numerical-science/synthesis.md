@@ -12,7 +12,7 @@
 
 Git is a very useful tool for every day research work: it helps keep track of all past versions of files without cluttering the file systems with names such as `document_v2.txt`, `document_final.txt`.
 
-Git is useful for reproducibility: a commit hash uniquely identifies a specific version of a given file.
+Git is useful for reproducibility: it retains a full history of all the files ever committed, along with metadata such as who made changes to which files and when. Besides, a Git commit hash uniquely identifies a specific version of a given file.
 
 Git and online platforms such as Github and Gitlab are also very helpful when many people collaborate on the same project. This will be the topic of lab 05.
 
