@@ -4,7 +4,7 @@
 
  - Read [this introduction to open research](https://book.the-turing-way.org/reproducible-research/open/).
  - Then watch [this video](https://git-scm.com/video/what-is-version-control) that explains the basics of version control software such as Git, then read [this short complement](https://book.the-turing-way.org/reproducible-research/vcs/vcs-workflow/).
- - Wonder why this relates to open and reproducible science? Then [read this](https://book.the-turing-way.org/reproducible-research/vcs/).
+ - Wonder why this relates to open and reproducible science? Then read [this](https://book.the-turing-way.org/reproducible-research/vcs/).
  - Learn about the strength and limitations of using Git to do open science by reading [this](https://book.the-turing-way.org/reproducible-research/vcs/vcs-git-in-research/) (ignore the last section) and [this](https://book.the-turing-way.org/reproducible-research/vcs/vcs-git-general/).
  - In OpenReproLab, you will execute certain commands (including Git commands) in a terminal-based interface. If this is new to you, follow the first three sections of [this interactive tutorial](https://terminallearning.dev/) (select _Linux_, click on "Commencer l'apprentissage", and follow the sections "Navigation", "Fichiers & Dossiers", and "Lecture de Fichiers"). This resource is currently only available in French. We are looking for better material. Alternatively, this [static documentation](https://www.taniarascia.com/how-to-use-the-command-line-for-apple-macos-and-linux/) is another good introduction to the topic.
 
@@ -34,6 +34,6 @@ Python Code that is meant to be reused should be packaged into functions (or cla
 
 # Other resources
 
- - [Summary of useful shell commands](https://www.freecodetutorials.com/tutorials/devops/command-line-basics/).
- - [A quick overview of the main Git commands](https://rogerdudler.github.io/git-guide/), for people who already have a basic understanding of Git.
+ - [Summary of useful shell commands](https://www.freecodetutorials.com/tutorials/devops/command-line-basics/)
+ - [A quick overview of the main Git commands](https://rogerdudler.github.io/git-guide/), for people who already have a basic understanding of Git
  - [Git cheat sheet](https://git-scm.com/cheat-sheet)
