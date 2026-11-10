@@ -139,7 +139,7 @@ As mentionned before, Git has noticed that you have modified the Python script. 
 
 ## Create a Jupyter notebook that plots microplastics data
 
-Now that you have downloaded scientific data in a reproducible manner, create a Python-based Jupyter notebook to show the atmospheric concentration of microplastics as a function of year. Create another plot showing atmospheric deposition rates as a function of year.
+Now that you have downloaded scientific data in a reproducible manner, create a Python-based Jupyter notebook named `analyse-microplastics.ipynb` to show the atmospheric concentration of microplastics as a function of year. Create another plot showing atmospheric deposition rates as a function of year.
 
 > [!TIP]
 > Use `pandas` to read the data and `matplotlib` to plot it. Ask a peer or an instructor if needed.
