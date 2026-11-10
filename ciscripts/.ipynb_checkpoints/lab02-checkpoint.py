@@ -18,9 +18,9 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 import os
 import sys
 
-from misctools import part_banner, path_of_repo, check_url
+from misctools import part_banner, path_of_repo, check_url_zenodo_sandbox
 from questionnaire import Questionnaire
-from check_notebook import Notebook
+from check_notebook import *
 
 # ---------------------------------------------#
 # Part 1: Questionnaire on the FAIR principles #
@@ -36,7 +36,7 @@ questionnaire = Questionnaire(
         "questionnaire-on-fair.md",
     )
 )
-all_good = questionnaire.check_answers(
+all_good_part1 = questionnaire.check_answers(
     [
         [
             [0,1,2,3,4,5],
@@ -95,26 +95,24 @@ all_good = questionnaire.check_answers(
 
 part_banner(2, "Data format")
 
-data_format_notebook = Notebook(
+data_format_notebook = notebook(
     os.path.join(
         path_of_repo(),
         "labs",
         "02_data-management",
-        "data_format.ipynb",
+        "data-format.ipynb",
     )
 )
 
-answers_data_format_notebook = Notebook(
+answers_data_format_notebook = notebook(
     os.path.join(
         path_of_repo(),
         "ciscripts",
-        "data_format_answers.ipynb",
+        "data-format-answers.ipynb",
     )
 )
 
-comparison_data_format = Comparison(data_format_notebook, answers_data_format_notebook)
-
-all_good = comparison_data_format.check_answers(
+all_good_part2 = check_answers(
     [
         ("1.1","code",0),
         ("1.2","code",1),
@@ -122,8 +120,10 @@ all_good = comparison_data_format.check_answers(
         ("1.4","code",2),
         ("1.5","file","data/newprecip.txt"),
         ("1.6","raw",1),
-    ]
+    ],
+   data_format_notebook, answers_data_format_notebook, path_of_repo() 
 )
+
    
 # ---------------------------------------------#
 # Part 3: Data Warehouses                      #
@@ -140,7 +140,7 @@ upload_success = check_url_zenodo_sandbox(
     )
 )
 
-if all_good && upload_success:
+if all_good_part1 && all_good_part2 && upload_success:
     print("Lab 02 completed succesfully, congratulations!")
     sys.exit(0)
 else:
