@@ -149,8 +149,8 @@ Also print out in your notebook the average values of these two quantities, usin
 ```Python
 conc_avg = # You have to calculate it
 dep_avg = # You have to calculate it
-print(f"Average atmospheric microplastics composition = f{conc_avg:.4f} particles/m3")
-print(f"Average microplastics deposition rate = f{dep_avg:.0f} particles/m2/d")
+print(f"Average atmospheric microplastics composition = {conc_avg:.4f} particles/m3")
+print(f"Average microplastics deposition rate = {dep_avg:.0f} particles/m2/d")
 ```
 
 Before you commit and push your notebook to Github/Gitlab. Please make sure to:
