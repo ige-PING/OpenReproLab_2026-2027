@@ -10,7 +10,7 @@
 
 ## Git
 
-Git is a useful tool for every day research work: it helps keep track of all past versions of files without cluttering the file systems with names such as `document_v2.txt`, `document_final.txt`.
+Git is a useful tool for everyday research work: it helps keep track of all past versions of files without cluttering the file systems with names such as `document_v2.txt`, `document_final.txt`, etc.
 
 Git is useful for reproducibility: it retains a full history of all the files ever committed, along with metadata such as who made changes to which files and when. Besides, a Git commit hash uniquely identifies a specific version of a given file.
 
@@ -18,7 +18,7 @@ Git was initially created with software development in mind, but it can track al
 
 Git and online platforms such as Github and Gitlab are also very helpful when many people collaborate on the same project. This will be the topic of lab 05.
 
-Note that Git is not the only version-control systems. There are others such as [mercurial](https://www.mercurial-scm.org/). We chose Git because it is currently the most widely used.
+Git is not the only version-control system. There are others such as [mercurial](https://www.mercurial-scm.org/). We chose Git because it is currently the most widely used.
 
 ## Fetching data from the Internet
 
@@ -30,7 +30,7 @@ When possible, it is preferable to use scripts rather than web interfaces to dow
 
 ## Organizing Python code
 
-Python Code that is meant to be reused should be packaged into functions (or classes -- but we will not cover this topic in OpenReproLab) inside modules. These modules can be imported from scripts, from notebooks, or even from other modules.
+Python Code that is meant to be reused should be packaged into functions (or classes -- but we will not cover this topic in OpenReproLab) inside modules or packages. These can be imported from scripts, from notebooks, or even from other modules/packages.
 
 # Other resources
 
