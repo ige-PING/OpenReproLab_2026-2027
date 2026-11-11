@@ -1,0 +1,39 @@
+# Synthesis: ABC of reproducible numerical science
+
+## Reading and viewing list
+
+ - Read [this introduction to open research](https://book.the-turing-way.org/reproducible-research/open/).
+ - Then watch [this video](https://git-scm.com/video/what-is-version-control) that explains the basics of version control software such as Git, then read [this short complement](https://book.the-turing-way.org/reproducible-research/vcs/vcs-workflow/).
+ - Wonder why this relates to open and reproducible science? Then read [this](https://book.the-turing-way.org/reproducible-research/vcs/).
+ - Learn about the strength and limitations of using Git to do open science by reading [this](https://book.the-turing-way.org/reproducible-research/vcs/vcs-git-in-research/) (ignore the last section) and [this](https://book.the-turing-way.org/reproducible-research/vcs/vcs-git-general/).
+ - In OpenReproLab, you will execute certain commands (including Git commands) in a terminal-based interface. If this is new to you, follow the first three sections of [this interactive tutorial](https://terminallearning.dev/) (select _Linux_, click on "Commencer l'apprentissage", and follow the sections "Navigation", "Fichiers & Dossiers", and "Lecture de Fichiers"). This resource is currently only available in French. We are looking for better material. Alternatively, this [static documentation](https://www.taniarascia.com/how-to-use-the-command-line-for-apple-macos-and-linux/) is another good introduction to the topic.
+
+## Git
+
+Git is a useful tool for everyday research work: it helps keep track of all past versions of files without cluttering the file systems with names such as `document_v2.txt`, `document_final.txt`, etc.
+
+Git is useful for reproducibility: it retains a full history of all the files ever committed, along with metadata such as who made changes to which files and when. Besides, a Git commit hash uniquely identifies a specific version of a given file.
+
+Git was initially created with software development in mind, but it can track all kinds of files.
+
+Git and online platforms such as Github and Gitlab are also very helpful when many people collaborate on the same project. This will be the topic of lab 05.
+
+Git is not the only version-control system. There are others such as [mercurial](https://www.mercurial-scm.org/). We chose Git because it is currently the most widely used.
+
+## Fetching data from the Internet
+
+When possible, it is preferable to use scripts rather than web interfaces to download data files. A script:
+ - Retains information about the provenance of the data
+ - Can be self-documenting
+ - Can be version-controlled with Git
+ - Can be easily shared with others so that they can reproduce our work (lab 02 will present reproducible ways to share software)
+
+## Organizing Python code
+
+Python Code that is meant to be reused should be packaged into functions (or classes -- but we will not cover this topic in OpenReproLab) inside modules or packages. These can be imported from scripts, from notebooks, or even from other modules/packages.
+
+# Other resources
+
+ - [Summary of useful shell commands](https://www.freecodetutorials.com/tutorials/devops/command-line-basics/)
+ - [A quick overview of the main Git commands](https://rogerdudler.github.io/git-guide/), for people who already have a basic understanding of Git
+ - [Git cheat sheet](https://git-scm.com/cheat-sheet)

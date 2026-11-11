@@ -18,15 +18,14 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 import os
 import sys
 
-from misctools import part_banner, path_of_repo, check_url_zenodo_sandbox
-from questionnaire import Questionnaire
+from orlcitools import part_banner, path_of_repo, check_url_zenodo_sandbox, Questionnaire
 from check_notebook import *
 
 # ---------------------------------------------#
 # Part 1: Questionnaire on the FAIR principles #
 # ---------------------------------------------#
 
-part_banner(1, "Questionnaire on the FAIR principles")
+print_banner("Part 1: Questionnaire on the FAIR principles")
 
 questionnaire = Questionnaire(
     os.path.join(
@@ -69,11 +68,10 @@ all_good_part1 = questionnaire.check_answers(
         [
             [0, 1, 2, 3, 4, 5],
             (
-                "Reusable describes data that can be used again, beyond its original purpose."
-                "To be reusable, data not only needs to be described in a way to help others"
-                "understand it, but also must be licensed with a licence that permits reuse."
-                " Furthermore, data must contain information about how it was created - provenance"
-                " - so that others know whether the data can be trusted"
+                "To be reusable, datasets need to be thoroughly and clearly "
+                "described, including how they were created, to increase "
+                "transparency and trust. Datasets must also be licensed with "
+                "a licence that permits reuse."
             ),
         ],
     ]
@@ -83,7 +81,7 @@ all_good_part1 = questionnaire.check_answers(
 # Part 2: Data format #
 # ---------------------------------------------#
 
-part_banner(2, "Data format")
+print_banner("Part 2: Data format")
 
 data_format_notebook = notebook(
     os.path.join(
@@ -133,7 +131,7 @@ all_good_part2 = check_answers(
 # Part 3: Data Warehouses                      #
 # ---------------------------------------------#
 
-part_banner(3, "Upload of data on zenodo sandbox")
+print_banner("Part 3: Upload of data on zenodo sandbox")
 
 upload_success = check_url_zenodo_sandbox(
     os.path.join(

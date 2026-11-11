@@ -1,0 +1,49 @@
+[project]
+
+name = "OpenReproLab_2026-2027"
+description = "An interactive course on tools and methods to produce FAIR and reproducible science."
+
+authors = [
+    {name="The OpenReproLab team at IGE"},
+]
+
+maintainers = [
+    {name="The OpenReproLab team at IGE"},
+]
+
+license-files = ["LICENSES/CC-BY-SA-4.0", "LICENSES/GPL-3.0-only"]
+
+readme = {file="README.md", content-type="text/markdown"}
+
+keywords = ["reproducibility", "FAIR"]
+
+requires-python = ">=3.10"
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Science/Research",
+    "Natural Language :: English",
+    "Topic :: Scientific/Engineering",
+]
+
+[project.urls]
+
+Homepage = "https://github.com/ige-PING/OpenReproLab_2026-2027"
+Issues = "https://github.com/ige-PING/OpenReproLab_2026-2027/issues"
+
+[tool.ruff]
+
+line-length = 79
+
+[tool.ruff.lint]
+
+extend-select = [
+    "I001" # Sort imports
+]

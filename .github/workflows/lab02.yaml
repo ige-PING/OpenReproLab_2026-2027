@@ -19,9 +19,10 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - 'users/**'
+      - 'user/**'
     paths:
-      - 'ciscripts/**.py'
+      - 'ciscripts/orlcitools.py'
+      - 'ciscripts/lab02.py'
       - 'labs/02_data_management/**'
 jobs:
   Lab02:
