@@ -294,12 +294,33 @@ def verify_notebook_nomodule_notebook():
     return VerifiedResult(msg == "", msg)
 
 
+def verify_notebook_nomodule_doi_cited():
+    """Verifier function for the Jupyter notebook (check for DOI)."""
+    out = subprocess.run(
+        ["grep", "-c", "10.5281/zenodo.23046811", notebookpath],
+        capture_output=True,
+        text=True,
+    )
+    if out.returncode:
+        msg = "Problem when looking for DOI in notebook."
+        if out.stderr.strip() != "":
+            msg += f"\n\n{out.stderr}"
+        return VerifiedResult(False, msg)
+    count = int(out.stdout[:-1].split("\n")[0])
+    if count < 1:
+        return VerifiedResult(
+            False, "Could not find the DOI of the data in the notebook."
+        )
+    return VerifiedResult(True, None)
+
+
 verifiers.append(
     orlcitools.Verifier(
         "Create notebook and update gitignore file",
         [
             verify_notebook_nomodule_gitignore,
             verify_notebook_nomodule_notebook,
+            verify_notebook_nomodule_doi_cited,
         ],
     )
 )
