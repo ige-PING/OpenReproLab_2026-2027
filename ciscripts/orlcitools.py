@@ -15,11 +15,33 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 
 """
 
+import hashlib
 import os
 import sys
 from collections import namedtuple
 
-VerifiedResult = namedtuple("VerifiedResult", "ok feedback")
+VerifiedResult = namedtuple("VerifiedResult", "success feedback")
+
+
+def is_iterable(obj):
+    """Check whether object is iterable.
+
+    Parameters
+    ----------
+    obj: any
+        The object to check.
+
+    Returns
+    -------
+    bool
+        True if object is iterable, False otherwise.
+
+    """
+    try:
+        iter(obj)
+    except TypeError:
+        return False
+    return True
 
 
 def path_of_repo(path=None):
@@ -77,15 +99,18 @@ class Verifier:
     ----------
     title: str
         The title of the part to be verified.
-    verify_function: function
-        The function that will be called to verify the part. This function
-        should return a VerifiedResult instance.
+    functions: function or sequence of functions
+        The function(s) that will be called to verify the part. These
+        functions should return a VerifiedResult instance.
 
     """
 
-    def __init__(self, title, verify_function):
+    def __init__(self, title, functions):
         self.title = title
-        self.verify_function = verify_function
+        if is_iterable(functions):
+            self.functions = functions
+        else:
+            self.functions = [functions]
 
     def verify(self):
         """Run verification and print feedback.
@@ -97,15 +122,36 @@ class Verifier:
 
         """
         print_banner(self.title)
-        result = self.verify_function()
-        if result.feedback is not None and result.feedback.strip() != "":
-            print(result.feedback)
-            print()
-        if result.ok:
+        results = []
+        for i, function in enumerate(self.functions):
+            try:
+                result = function()
+            except Exception as e:
+                try:
+                    msg = e.message
+                except:
+                    msg = str(e)
+                msg = (
+                    f'Calling the verifier function "{function.__name__}" '
+                    f"failed with the following error message:\n\n {msg}"
+                )
+                results.append(VerifiedResult(False, msg))
+            else:
+                results.append(result)
+        success = all(result.success for result in results)
+        feedback = "\n\n--\n\n".join(
+            result.feedback
+            for result in results
+            if result.feedback is not None and result.feedback.strip() != ""
+        )
+        if feedback.strip() != "":
+            print(feedback)
+            print("\n---\n")
+        if success:
             print("Part completed successfully!")
         else:
             print("Some checks failed for this part, try again!")
-        return result.ok
+        return success
 
 
 def verify_lab(verifiers):
@@ -127,6 +173,78 @@ def verify_lab(verifiers):
     else:
         print("==> Some checks failed, keep at it!")
         sys.exit(1)
+
+
+def verifier_function_is_absent(path):
+    """Verifier function to check that a file or directory is absent.
+
+    The test will pass if given path does **NOT** exist.
+
+    Parameters
+    ----------
+    path: str
+        Path to check (absolute or relative path).
+
+    Returns
+    -------
+    VerifiedResult
+        Whether the test passed or not, with feedback.
+
+    """
+    if os.path.lexists(path):
+        return VerifiedResult(
+            False,
+            (
+                f'File or directory "{path}" was found '
+                "but it was expected to be absent"
+            ),
+        )
+    return VerifiedResult(True, None)
+
+
+def verifier_function_checksum(
+    filepath,
+    expected_hash,
+    algo="sha256",
+    msg_if_failed="The hashsum of the file did not match the expected one.",
+):
+    """Verifier function to check the hash of a file versus known value.
+
+    Parameters
+    ----------
+    filepath: str
+        File to check (absolute or relative path).
+    expected_hash: str
+        The value of the hashsum we expect the file to have.
+    algo: str
+        The hashing algorithm to use.
+    msg_if_failed:
+        Message to return if the hashsum of the file did not match the
+        expected one.
+
+    Returns
+    -------
+    VerifiedResult
+        Whether the test passed or not, with feedback.
+
+    """
+
+    try:
+        f = open(os.path.expanduser(filepath), mode="rb")
+    except:
+        return VerifiedResult(
+            False,
+            f'The file "{filepath}" could not be opened. It might not exist '
+            "or it might be in the wrong location.",
+        )
+    digest = hashlib.file_digest(f, algo).hexdigest()
+    try:
+        f.close()
+    except:
+        pass
+    if digest != expected_hash:
+        return VerifiedResult(False, msg_if_failed)
+    return VerifiedResult(True, None)
 
 
 class Question:
