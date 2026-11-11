@@ -120,6 +120,18 @@ all_good_part2 = check_answers(
         ("1.4","code",2),
         ("1.5","file","data/newprecip.txt"),
         ("1.6","raw",1),
+        ("2.1","code",3),
+        ("2.2","code",4),
+        ("2.3","code",5),
+        ("2.4","file","data/new_precipitation.csv"),
+        ("2.5","raw",2),
+        ("3.1","code",6),
+        ("3.2","code",7),
+        ("3.3","code",8),
+        ("3.4","code",9),
+        ("3.5","code",10),
+        ("3.6","file","data/random_temp_press.nc"),
+        
     ],
    data_format_notebook, answers_data_format_notebook, path_of_repo() 
 )
