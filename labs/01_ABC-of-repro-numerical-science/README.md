@@ -84,7 +84,7 @@ If you did not succeed, go back to the previous part, modify `hello-world.txt` a
 > In this section you have learned:
 > - How to check the outputs of our lab-checking facilities
 
-## Create Python script that downloads CSV data
+## Create Python script that downloads microplastics data
 
 As a preliminary exercise, run the `git log` command from inside your repository and try to make sense of what you see by answering the following questions for yourself (ask a peer or an instructor for explanations if needed):
 
