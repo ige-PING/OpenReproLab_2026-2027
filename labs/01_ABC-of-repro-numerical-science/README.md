@@ -185,13 +185,13 @@ download_file_from_github(repository, commit, filepath):
     # Your job is to implement this function.
 ```
 
-Modify your notebook to import this function using:
+Congratulations, you created your first Python module! :tada:  Modify your notebook to import this module using:
 
 ```Python
 from lab01utils import download_file_from_github
 ```
 
-Now call this function to download the dataset from your notebook before you start analyzing and plotting it.
+Now call the `download_file_from_github` function to download the dataset from your notebook before you start analyzing and plotting it.
 
 You just made your work more reproducible! Now your notebook shows explicitly what exact file you are using in your analysis.
 
@@ -210,7 +210,7 @@ Push the updated version of `quizz.md` to Github/Gitlab to check your answers.
 
 ## Conclusion
 
-Well done! You have now hands-on experience on using basic Git commands and basic Python functionality. You should also have a better understanding of how to use these tools to make your work more reproducible. Note that you have used three methods of using Python code:
+Well done! :partying_face: You have now hands-on experience on using basic Git commands and basic Python functionality. You should also have a better understanding of how to use these tools to make your work more reproducible. Note that you have used three methods of using Python code:
 
  - A script: a series of instructions that are executed sequentially
  - A Jupyter notebook: a series of instructions that are executed sequentially, with integrated display of outputs (text and graphics)
