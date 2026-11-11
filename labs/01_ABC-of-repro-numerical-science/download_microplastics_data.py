@@ -42,6 +42,12 @@ commit = "????"
 filepath = "data/processed/obs_evangelou2026-revised.csv"
 
 if __name__ == "__main__":
+    # Remove target file if already present
+    try:
+        os.remove(os.path.basename(filepath))
+    except:
+        pass
+
     # Download the file using wget
     url = "/".join([base_url, repository, commit, filepath])
     out = subprocess.run(["wget", url], capture_output=True, text=True)
