@@ -310,45 +310,13 @@ class Choice:
 class Questionnaire:
     """Class to handle full questionnaires."""
 
-    def __init__(self, filepath):
+    def __init__(self, filepath, correct_answers):
         """Initialize self by parsing a file.
 
         Parameters
         ----------
         filepath: str
             Path to the file containing the questionnaire.
-
-        """
-        self.questions = []
-        with open(filepath) as f:
-            lines = [line.strip() for line in f]
-        counter = 1
-        for i_line, line in enumerate(lines):
-            if len(line) == 0:
-                continue
-            start_q = f"{counter}. "
-            start_a = "- [ ] "
-            start_s = "- [x] "
-            if line.startswith(start_q):
-                self.questions.append(Question(line[len(start_q) :]))
-                counter += 1
-            elif line.startswith(start_a):
-                self.questions[-1].add_choice(line[len(start_a) :], False)
-            elif line.startswith(start_s) or line.startswith(start_s.upper()):
-                self.questions[-1].add_choice(line[len(start_s) :], True)
-            else:
-                msg = f"Could not parse line {i_line + 1}: {line}."
-                raise ValueError(msg)
-
-    def __repr__(self):
-        """String representation of self."""
-        return "\n".join(f"{i + 1}. {q}" for i, q in enumerate(self.questions))
-
-    def check_answers(self, correct_answers):
-        """Check choices selected in questionnaire versus correct answers.
-
-        Parameters
-        ----------
         correct_answers: list
             The correct answers, along with hints to help students find the
             correct answers. The required format is:
@@ -361,24 +329,55 @@ class Questionnaire:
 
             where the numbers are the 0-based indices of the correct choices.
 
-        Returns
-        -------
-        bool
-            True if and only if all questions were answered correctly.
-
-        Prints
-        ------
-        Information on each question: whether the question was answered
-        correctly and, if not, the corresponding hint.
-
         """
-        if len(correct_answers) != len(self.questions):
+        self._questions = []
+        with open(filepath) as f:
+            lines = [line.strip() for line in f]
+        counter = 1
+        for i_line, line in enumerate(lines):
+            if len(line) == 0:
+                continue
+            start_q = f"{counter}. "
+            start_a = "- [ ] "
+            start_s = "- [x] "
+            if line.startswith(start_q):
+                self._questions.append(Question(line[len(start_q) :]))
+                counter += 1
+            elif line.startswith(start_a):
+                self._questions[-1].add_choice(line[len(start_a) :], False)
+            elif line.startswith(start_s) or line.startswith(start_s.upper()):
+                self._questions[-1].add_choice(line[len(start_s) :], True)
+            else:
+                msg = f"Could not parse line {i_line + 1}: {line}."
+                raise ValueError(msg)
+        if len(correct_answers) != len(self._questions):
             msg = "Incorrect number of answers."
             raise ValueError(msg)
+        self._correct_answers = correct_answers
 
+    def __repr__(self):
+        """String representation of self."""
+        return "\n".join(
+            f"{i + 1}. {q}" for i, q in enumerate(self._questions)
+        )
+
+    def __call__(self):
+        """Calling behavior for self."""
+        return self.check_answers()
+
+    def check_answers(self):
+        """Check choices selected in questionnaire versus correct answers.
+
+        Returns
+        -------
+        VerifiedResult
+            The outcome of evaluating the questionnaire.
+
+        """
         questionnaire_is_correct = True
-        for i_question, question in enumerate(self.questions):
-            correct, hint = correct_answers[i_question]
+        feedback = ""
+        for i_question, question in enumerate(self._questions):
+            correct, hint = self._correct_answers[i_question]
 
             if min(correct) < 0 or max(correct) > len(question.choices) - 1:
                 msg = "Bad index value (too small or too large)."
@@ -398,11 +397,14 @@ class Questionnaire:
                     break
 
             # Print feedback
+            if i_question > 0:
+                feedback += "\n\n"
+            i = i_question + 1
             if question_is_correct:
-                print(f"Answer to question {i_question + 1} is correct.\n")
+                feedback += f"Answer to question {i} is correct.\n"
             else:
-                print(f"Answer to question {i_question + 1} is incorrect.\n")
-                if len(hint.strip()) > 0:
-                    print(f"Hint: {hint}\n")
+                feedback += f"Answer to question {i} is incorrect.\n"
+                if hint is not None and len(hint.strip()) > 0:
+                    feedback += f"\nHint: {hint}"
 
-        return questionnaire_is_correct
+        return VerifiedResult(questionnaire_is_correct, feedback)

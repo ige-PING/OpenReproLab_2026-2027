@@ -46,5 +46,5 @@ if __name__ == "__main__":
     url = "/".join([base_url, repository, commit, filepath])
     out = subprocess.run(["wget", url], capture_output=True, text=True)
     if out.returncode:
-        msg = out.stdout[:-1].split("\n")
+        msg = out.stderr
         raise RuntimeError(msg)

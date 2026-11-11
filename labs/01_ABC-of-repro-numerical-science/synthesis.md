@@ -32,6 +32,8 @@ When possible, it is preferable to use scripts rather than web interfaces to dow
 
 Python Code that is meant to be reused should be packaged into functions (or classes -- but we will not cover this topic in OpenReproLab) inside modules or packages. These can be imported from scripts, from notebooks, or even from other modules/packages.
 
+Notebooks are good as a communication tool to show results and/or to explain a workflow. Scripts and modules are however more convenient for daily work. In particular, modules are the basic construction blocks for more complex software. One should favour using scripts and modules in the absence of a good specific reason to use notebooks instead.
+
 # Other resources
 
  - [Summary of useful shell commands](https://www.freecodetutorials.com/tutorials/devops/command-line-basics/)

@@ -423,6 +423,99 @@ verifiers.append(
 )
 
 
+# ----- #
+# Quizz #
+# ----- #
+
+correct_answers = [
+    (
+        [0],
+        (
+            "Check out this discussion: "
+            "https://stackoverflow.com/questions/610208/"
+            "how-to-retrieve-a-single-file-from-a-specific-revision-in-git"
+        ),
+    ),
+    (
+        [1, 3],
+        (
+            "Check out this tutorial: "
+            "https://www.w3schools.com/git/git_ignore.asp"
+        ),
+    ),
+    (
+        [0, 1, 2, 3],
+        (
+            "Scripts are text-based callable programs. The output of running "
+            "git diff on images is not so helpful for humans."
+        ),
+    ),
+    (
+        [0, 1],
+        (
+            "Notebooks can show the output of Python commands, graphics, and "
+            "a variety of metadata. Script can however contain text-based "
+            "metadata via comments and docstrings. Docstrings will be "
+            "discussed in lab 03."
+        ),
+    ),
+    (
+        [2],
+        (
+            "Notebooks are good communication tools to show results and/or to "
+            "explain a workflow. Scripts and modules are however more "
+            "convenient for daily work. One should favour using scripts and "
+            "modules in the absence of a good specific reason to "
+            "use notebooks instead."
+        ),
+    ),
+    (
+        [0, 1, 4],
+        (
+            "Good software is built in a modular way, relying on modules to "
+            "divide the code into small logical chunks that humans can easily "
+            "comprehend. Modularizing a piece of software is however not a "
+            "guarantee of better memory performance."
+        ),
+    ),
+    (
+        [2],
+        (
+            "The base URL of a Github- or Gitlab-hosted repository points "
+            "toward the entire repository, not toward a specific commit."
+        ),
+    ),
+    (
+        [1, 2],
+        (
+            "Using a script is more reproducible than using a web browser but "
+            "it does not guarantee faster download speed (which depends mostly "
+            "on the server at the other end, and on the quality of your "
+            "Internet connection). Printing out a piece of code on paper is "
+            "not the best way to share code. One drawback of this approach "
+            "(among many) is that is does not carry version-tracking "
+            "information with it."
+        ),
+    ),
+    (
+        [1],
+        (
+            "Git is currently the most widely-used version control system, "
+            "but it not the only one (examples: mercurial, svn, etc.)"
+        ),
+    ),
+]
+
+verifiers.append(
+    orlcitools.Verifier(
+        "Quizz",
+        orlcitools.Questionnaire(
+            os.path.join(dir_lab, "quizz.md"), correct_answers
+        ),
+    )
+)
+
+
 # ---------------------------- #
 # Run checks on the entire lab #
 # ---------------------------- #
