@@ -191,7 +191,7 @@ Congratulations, you created your first Python module! :tada:  Modify your noteb
 from lab01utils import download_file_from_github
 ```
 
-Now call the `download_file_from_github` function to download the dataset from your notebook before you start analyzing and plotting it.
+Now call the `download_file_from_github` function to download the dataset directly from your notebook before you start analyzing and plotting said dataset.
 
 You just made your work more reproducible! Now your notebook shows explicitly what exact file you are using in your analysis.
 
