@@ -157,7 +157,7 @@ print(f"Average microplastics deposition rate = {dep_avg:.0f} particles/m2/d")
 Before you commit and push your notebook to Github/Gitlab. Please make sure to:
 
  - Properly cite the dataset directly in your notebook, by mentioning, at the very least, its DOI.
- - Add `.ipynb_checkpoints` to your `.gitignore` file to prevent commiting this directory (it is automatically created by Jupyter when running notebooks, but should never be committed).
+ - Add `.ipynb_checkpoints` to your `.gitignore` file to prevent committing this directory (it is automatically created by Jupyter when running notebooks, but should never be committed).
 
 > [!IMPORTANT]
 > In this section you have learned:
@@ -205,11 +205,11 @@ Push your `lab01utils.py` and your updated notebook to Github/Gitlab.
 > - How to create a Python module that contains reusable utility functions
 > - How to use this module from a notebook
 
-## Multiple-choice quizz on what you learned in this lab
+## Multiple-choice quiz on what you learned in this lab
 
-To finish this lab, fill out the quizz by adding the letter `x` in file `quizz.md` to select correct answers.
+To finish this lab, fill out the quiz by adding the letter `x` in file `quiz.md` to select correct answers.
 
-Push the updated version of `quizz.md` to Github/Gitlab to check your answers.
+Push the updated version of `quiz.md` to Github/Gitlab to check your answers.
 
 ## Conclusion
 

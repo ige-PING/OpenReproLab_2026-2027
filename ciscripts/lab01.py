@@ -423,9 +423,9 @@ verifiers.append(
 )
 
 
-# ----- #
-# Quizz #
-# ----- #
+# ---- #
+# Quiz #
+# ---- #
 
 correct_answers = [
     (
@@ -508,9 +508,9 @@ correct_answers = [
 
 verifiers.append(
     orlcitools.Verifier(
-        "Quizz",
+        "Quiz",
         orlcitools.Questionnaire(
-            os.path.join(dir_lab, "quizz.md"), correct_answers
+            os.path.join(dir_lab, "quiz.md"), correct_answers
         ),
     )
 )
