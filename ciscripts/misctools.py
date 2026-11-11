@@ -82,6 +82,6 @@ def check_url_zenodo_sandbox(filepath=None):
 
     """
     with open(filepath) as f:
-            lines = [line.strip() for line in f]
+        lines = [line.strip() for line in f]
 
-    return validators.url("https://sandbox.zenodo.org/records/"+lines[1])
+    return validators.url("https://sandbox.zenodo.org/records/" + lines[1])

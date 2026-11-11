@@ -39,45 +39,35 @@ questionnaire = Questionnaire(
 all_good_part1 = questionnaire.check_answers(
     [
         [
-            [0,1,2,3,4,5],
-            (
-                "Go check https://www.nature.com/articles/sdata201618"
-            ),
+            [0, 1, 2, 3, 4, 5],
+            ("Go check https://www.nature.com/articles/sdata201618"),
         ],
         [
             [1],
-            (
-                "Go check https://www.gofair.foundation/fair-principles"
-            ),
+            ("Go check https://www.gofair.foundation/fair-principles"),
         ],
-                [
+        [
             [2],
-            (
-                "Go check https://www.gofair.foundation/fair-principles"
-            ),
+            ("Go check https://www.gofair.foundation/fair-principles"),
         ],
-                [
+        [
             [0],
-            (
-                "Go check https://www.gofair.foundation/fair-principles"
-            ),
+            ("Go check https://www.gofair.foundation/fair-principles"),
         ],
-                [
+        [
             [2],
-            (
-                "Go check https://www.gofair.foundation/fair-principles"
-            ),
+            ("Go check https://www.gofair.foundation/fair-principles"),
         ],
-                [
-            [1,2,4],
+        [
+            [1, 2, 4],
             (
                 "Interoperable means the data usually need to be integrated"
                 "with other data. In addition, the data need to interoperate"
                 "with applications or workflows for analysis, storage, and processing."
             ),
         ],
-                [
-            [0,1,2,3,4,5],
+        [
+            [0, 1, 2, 3, 4, 5],
             (
                 "Reusable describes data that can be used again, beyond its original purpose."
                 "To be reusable, data not only needs to be described in a way to help others"
@@ -114,26 +104,28 @@ answers_data_format_notebook = notebook(
 
 all_good_part2 = check_answers(
     [
-        ("1.1","code",0),
-        ("1.2","code",1),
-        ("1.3","raw",0),
-        ("1.4","code",2),
-        ("1.5","file","data/newprecip.txt"),
-        ("1.6","raw",1),
-        ("2.1","code",3),
-        ("2.2","code",4),
-        ("2.3","code",5),
-        ("2.4","file","data/new_precipitation.csv"),
-        ("2.5","raw",2),
-        ("3.1","code",6),
-        ("3.2","code",7),
-        ("3.3","code",8),
-        ("3.4","code",9),
-        ("3.5","code",10),
-        ("3.6","file","data/random_temp_press.nc"),
+        ("1.1", "code", 0),
+        ("1.2", "code", 1),
+        ("1.3", "raw", 0),
+        ("1.4", "code", 2),
+        ("1.5", "file", "data/newprecip.txt"),
+        ("1.6", "raw", 1),
+        ("2.1", "code", 3),
+        ("2.2", "code", 4),
+        ("2.3", "code", 5),
+        ("2.4", "file", "data/new_precipitation.csv"),
+        ("2.5", "raw", 2),
+        ("3.1", "code", 6),
+        ("3.2", "code", 7),
+        ("3.3", "code", 8),
+        ("3.4", "code", 9),
+        ("3.5", "code", 10),
+        ("3.6", "file", "data/random_temp_press.nc"),
         
     ],
-   data_format_notebook, answers_data_format_notebook, path_of_repo() 
+    data_format_notebook,
+    answers_data_format_notebook, 
+    path_of_repo(), 
 )
 
    
@@ -152,7 +144,7 @@ upload_success = check_url_zenodo_sandbox(
     )
 )
 
-if all_good_part1 && all_good_part2 && upload_success:
+if all_good_part1 and all_good_part2 and upload_success:
     print("Lab 02 completed succesfully, congratulations!")
     sys.exit(0)
 else:
