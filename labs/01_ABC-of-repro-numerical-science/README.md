@@ -24,6 +24,9 @@ git clone git@gricad-gitlab.univ-grenoble-alpes.fr:ping/openreprolab_2026-2027.g
 cd openreprolab_2026-2027
 ```
 
+> [!TIP]
+> When cloning a repository, you may be asked to confirm that "you really want to connect to that server". To verify the authenticity of said server before allowing the connection, make sure that the fingerprint of the server shown in your terminal (that weird-looking sequence of mumbled characters) matches the one listed online (for [Github](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints) or Gricad's Gitlab).
+
 If you are an OpenReproLab student, run the following commands (replace `${username}` by your Github or Gitlab username):
 
 ```sh
