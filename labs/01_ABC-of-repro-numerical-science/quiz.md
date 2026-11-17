@@ -8,7 +8,7 @@
  - [ ] Tell Git not to send me notifications while I work.
  - [x] Tell Git which files should never be committed.
  - [ ] Prevent other people from messing with my Git repository.
- - [ ] Help me keep my repository clean, lean, and human-readable.
+ - [x] Help me keep my repository clean, lean, and human-readable.
 
 3. Which of the following are advantages of using a script instead of a Jupyter notebook?
 
