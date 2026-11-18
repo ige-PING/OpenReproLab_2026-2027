@@ -15,7 +15,7 @@ Now that Git is properly configured, you can clone the OpenReproLab repository o
 
 ```sh
 # You can clone it from Github...
-git clone https://github.com/ige-PING/OpenReproLab_2026-2027.git
+git clone https://github.com/ige-PING/OpenReproLab_2026-2027.git ./openreprolab_2026-2027
 
 # ... or from Gricad's Gitlab
 git clone git@gricad-gitlab.univ-grenoble-alpes.fr:ping/openreprolab_2026-2027.git
