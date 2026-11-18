@@ -153,7 +153,7 @@ Now that you have downloaded scientific data in a reproducible manner, create a 
 > [!TIP]
 > You can get inspiration from the sample code below :smiley:
 
-```Python
+```python
 # Consider the following data table stored in file "population.csv"
 # Data was retrieved on 2026-11-18 from:
 #  - Grenoble: https://en.wikipedia.org/wiki/Grenoble
@@ -188,7 +188,7 @@ pop_avg = data.population[data.city == "Grenoble"].mean()
 
 Also print out in your notebook the average values of these two quantities, using the following code in a cell:
 
-```Python
+```python
 conc_avg = # You have to calculate it
 dep_avg = # You have to calculate it
 print(f"Average atmospheric microplastics composition = {conc_avg:.4f} particles/m3")
@@ -210,7 +210,7 @@ At this stage, your notebook plots and analyzes data, with appropriate citation.
 
 One way to do so is to make it more explicit in your notebook from where and how you downloaded the data. Here we ask you to create a file named `lab01utils.py` that contains a function with the following header:
 
-```Python
+```python
 download_file_from_github(repository, commit, filepath):
     """Download specific file from Github repository.
 
@@ -231,7 +231,7 @@ Your first task is to complete the implementation of this function. Feel free to
 
 Congratulations, you created your first Python module! :tada:  Modify your notebook to import this module using:
 
-```Python
+```python
 from lab01utils import download_file_from_github
 ```
 
