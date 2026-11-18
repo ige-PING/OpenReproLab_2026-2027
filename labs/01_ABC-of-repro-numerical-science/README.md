@@ -135,6 +135,7 @@ We want to commit the modified script but **not** the CSV data file. These data 
 # Ignore the data file downloaded by the script
 obs_evangelou2026-revised.csv
 ```
+
 Run `git status` again to make sure that Git now ignores this file.
 
 As mentionned before, Git has noticed that you have modified the Python script. Use `git diff download_microplastics_data.py` to review your changes. Once you are satisfied with your changes: add, commit, and push both the `.gitignore` file and the modified script. Make sure your work passes our tests for this section before moving on to the next one.
@@ -150,7 +151,40 @@ As mentionned before, Git has noticed that you have modified the Python script. 
 Now that you have downloaded scientific data in a reproducible manner, create a Python-based Jupyter notebook named `analyse-microplastics.ipynb` and plot the atmospheric concentration of microplastics as a function of year. In a different cell of the notebook, create another plot showing atmospheric deposition rates as a function of year.
 
 > [!TIP]
-> Use `pandas` to read the data and `matplotlib` to plot it. Ask a peer or an instructor for help if needed.
+> You can get inspiration from the sample code below :smiley:
+
+```Python
+# Consider the following data table stored in file "population.csv"
+# Data was retrieved on 2026-11-18 from:
+#  - Grenoble: https://en.wikipedia.org/wiki/Grenoble
+#  - Lyon: https://en.wikipedia.org/wiki/Lyon
+# Both cite EHESS and INSEE as the original data source.
+#
+# city,year, population
+# Grenoble,1990,150758
+# Grenoble,1999,153317
+# Grenoble,2007,156793
+# Grenoble,2012,158346
+# Grenoble,2017,158454
+# Grenoble,2023,156140
+# Lyon,1990,415487
+# Lyon,1999,445452
+# Lyon,2007,472330
+# Lyon,2012,496343
+# Lyon,2017,516092
+# Lyon,2023,519127
+
+from pandas import read_csv
+from matplotlib.pyplot import plot
+
+data = read_csv("population.csv")
+
+# Plot a time series of Grenoble's population (with circles)
+plot(data.year[data.city == "Grenoble"], data.population[data.city == "Grenoble"], "o")
+
+# Calculate the average population in Grenoble since 1990
+pop_avg = data.population[data.city == "Grenoble"].mean()
+```
 
 Also print out in your notebook the average values of these two quantities, using the following code in a cell:
 
