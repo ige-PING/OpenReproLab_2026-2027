@@ -38,7 +38,7 @@ import subprocess
 
 base_url = "https://raw.githubusercontent.com"
 repository = "GEOS-Chem-IGE/hough2026_atmo-plast-emis_harmonize"
-commit = "a009a98"
+commit = "a0ba5c3"
 filepath = "data/processed/obs_evangelou2026-revised.csv"
 
 if __name__ == "__main__":
