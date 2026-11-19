@@ -14,7 +14,7 @@
 
  - [x] Using `git diff` on a script is typically more insighful than running it on a Jupyter notebook.
  - [x] A graphical environment is needed to visualize a notebook, whereas a terminal-based interface (eg. on a super-computer) suffices to write and use scripts.
- - [ ] A script does not contain images, so scripts typically use less disk space than notebooks.
+ - [x] A script does not contain images, so scripts typically use less disk space than notebooks.
  - [x] Scripts can be more easily integrated into larger workflows.
 
 4. Which of the following are advantages of using a Jupyter notebook instead of a script?
@@ -48,7 +48,7 @@
  - [ ] A script/module downloads data faster than a web browser.
  - [x] A script/module keeps a written track of what was actually downloaded (ie. it acts as documentation).
  - [x] A script/module makes it easier for others to reproduce my work.
- - [x] If I use a script or a module, I can print it out on paper to share it with my colleagues.
+ - [ ] If I use a script or a module, I can print it out on paper to share it with my colleagues.
 
 9. Is Git the only existing version-control system?
 
