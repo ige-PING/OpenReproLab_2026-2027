@@ -34,7 +34,7 @@
  - [x] It makes it easier for other people to use my work because they can import my modules where needed.
  - [x] If I find a bug, I have to fix it in one file instead of fixing it in all files where it has been copy-pasted.
  - [ ] Python will run out of memory if I copy-paste the same code everywhere.
- - [x] The more files I create, the more my research advisor will think I work hard.
+ - [ ] The more files I create, the more my research advisor will think I work hard.
  - [x] It usually makes the code easier to read.
 
 7. With Git, can I explicitly and unequivocally make a reference to a specific version of a given file in a repository?
