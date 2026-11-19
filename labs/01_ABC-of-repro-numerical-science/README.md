@@ -20,6 +20,8 @@ git clone https://github.com/ige-PING/OpenReproLab_2026-2027.git ./openreprolab_
 # ... or from Gricad's Gitlab
 git clone git@gricad-gitlab.univ-grenoble-alpes.fr:ping/openreprolab_2026-2027.git
 
+# /!\ For non-OpenReproLab students, clone your fork instead!
+
 # Move to the OpenReproLab directory
 cd openreprolab_2026-2027
 ```
