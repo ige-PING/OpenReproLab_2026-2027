@@ -2,6 +2,7 @@
 
 name = "OpenReproLab_2026-2027"
 description = "An interactive course on tools and methods to produce FAIR and reproducible science."
+version = "0.1"
 
 authors = [
     {name="The OpenReproLab team at IGE"},
@@ -46,4 +47,9 @@ line-length = 79
 
 extend-select = [
     "I001" # Sort imports
+]
+
+[dependency-groups]
+dev = [
+    "jupyter>=1.1.1",
 ]
