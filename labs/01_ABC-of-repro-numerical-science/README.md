@@ -214,7 +214,7 @@ At this stage, your notebook plots and analyzes data, with appropriate citation.
 One way to do so is to make it more explicit in your notebook from where and how you downloaded the data. Here we ask you to create a file named `lab01utils.py` that contains a function with the following header:
 
 ```python
-download_file_from_github(repository, commit, filepath):
+def download_file_from_github(repository, commit, filepath):
     """Download specific file from Github repository.
 
     Parameters
