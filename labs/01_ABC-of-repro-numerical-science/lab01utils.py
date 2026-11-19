@@ -15,6 +15,11 @@ def download_file_from_github(repository, commit, filepath):
     """
 
     base_url = "https://raw.githubusercontent.com"
+    
+    try:
+        os.remove(os.path.basename(filepath))
+    except:
+        pass
 
     # Download the file using wget
     url = "/".join([base_url, repository, commit, filepath])
