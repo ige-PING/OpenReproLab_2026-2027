@@ -90,6 +90,9 @@ If you did not succeed, go back to the previous part, modify `hello-world.txt` a
 > [!TIP]
 > Try not to look at the hints of the following exercises before trying to solve them.
 
+> [!TIP]
+> You can also run the checks locally before committing with the command `./checklab`.
+
 > [!IMPORTANT]
 > In this section you have learned:
 > - How to find the outputs of our lab-checking facilities
