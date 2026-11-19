@@ -33,6 +33,10 @@ classifiers = [
     "Natural Language :: English",
     "Topic :: Scientific/Engineering",
 ]
+dependencies = [
+    "matplotlib>=3.10.9",
+    "pandas>=2.3.3",
+]
 
 [project.urls]
 
