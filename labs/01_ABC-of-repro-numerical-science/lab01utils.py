@@ -1,7 +1,11 @@
 import os
 import subprocess
 
-def download_file_from_github(repository, commit, filepath):
+def download_file_from_github(
+    repository = "GEOS-Chem-IGE/hough2026_atmo-plast-emis_harmonize",
+    commit = "a0ba5c3a6a5e0271ef9860ea8a5f8b73fce0e44d",
+    filepath = "data/processed/obs_evangelou2026-revised.csv",
+    ) -> None:
     """Download specific file from Github repository.
 
     Parameters
@@ -14,10 +18,7 @@ def download_file_from_github(repository, commit, filepath):
         File of interest within repository.
 
     """
-    base_url = "https://raw.githubusercontent.com"
-    repository = "GEOS-Chem-IGE/hough2026_atmo-plast-emis_harmonize"
-    commit = "a0ba5c3a6a5e0271ef9860ea8a5f8b73fce0e44d"
-    filepath = "data/processed/obs_evangelou2026-revised.csv"
+    base_url = "https://raw.githubusercontent.com" 
 
     if __name__ == "__main__":
         # Remove target file if already present
