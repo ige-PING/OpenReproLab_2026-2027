@@ -12,7 +12,7 @@
 
 3. Which of the following are advantages of using a script instead of a Jupyter notebook?
 
- - [ ] Using `git diff` on a script is typically more insighful than running it on a Jupyter notebook.
+ - [x] Using `git diff` on a script is typically more insighful than running it on a Jupyter notebook.
  - [x] A graphical environment is needed to visualize a notebook, whereas a terminal-based interface (eg. on a super-computer) suffices to write and use scripts.
  - [ ] A script does not contain images, so scripts typically use less disk space than notebooks.
  - [x] Scripts can be more easily integrated into larger workflows.
@@ -40,7 +40,7 @@
 7. With Git, can I explicitly and unequivocally make a reference to a specific version of a given file in a repository?
 
  - [ ] No, unless I write the version of the file in its name, such as `my-script_v3.py`.
- - [x] Yes, by mentioning the URL of the repository on Github or Gitlab.
+ - [ ] Yes, by mentioning the URL of the repository on Github or Gitlab.
  - [x] Yes, by mentioning the commit hash corresponding to the version of interest.
 
 8. It is recommended, when possible, to use scripts (or modules) to download data from the Internet instead of clicking away in a web browser because:
