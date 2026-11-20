@@ -8,11 +8,11 @@
  - [ ] Tell Git not to send me notifications while I work.
  - [x] Tell Git which files should never be committed.
  - [ ] Prevent other people from messing with my Git repository.
- - [ ] Make it easier for others to use my work by not cluttering the online repository.
+ - [x] Make it easier for others to use my work by not cluttering the online repository.
 
 3. Which of the following are advantages of using a script instead of a Jupyter notebook?
 
- - [ ] Using `git diff` on a script is typically more insighful than running it on a Jupyter notebook.
+ - [x] Using `git diff` on a script is typically more insighful than running it on a Jupyter notebook.
  - [x] A graphical environment is needed to visualize a notebook, whereas a terminal-based interface (eg. on a super-computer) suffices to write and use scripts.
  - [ ] A script does not contain images, so scripts typically use less disk space than notebooks.
  - [x] Scripts can be more easily integrated into larger workflows.
@@ -48,7 +48,7 @@
  - [ ] A script/module downloads data faster than a web browser.
  - [x] A script/module keeps a written track of what was actually downloaded (ie. it acts as documentation).
  - [x] A script/module makes it easier for others to reproduce my work.
- - [x] If I use a script or a module, I can print it out on paper to share it with my colleagues.
+ - [ ] If I use a script or a module, I can print it out on paper to share it with my colleagues.
 
 9. Is Git the only existing version-control system?
 
