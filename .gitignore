@@ -15,3 +15,6 @@
 # this program. If not, see <https://www.gnu.org/licenses/>.
 
 __pycache__
+
+# Ignore the data file downloaded by the script
+obs_evangelou2026-revised.csv
